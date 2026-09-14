@@ -8,6 +8,9 @@ export default config({
         kind: 'cloud',
         repo: 'dev-coding-for-fun/tabvar-keystatic',
       },
+  cloud: {
+    project: 'tabvar/tabvar-keystatic',
+  },
   collections: {
     posts: collection({
       label: 'Posts',
