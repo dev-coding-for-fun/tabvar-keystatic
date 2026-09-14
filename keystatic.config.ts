@@ -5,7 +5,7 @@ export default config({
     process.env.NODE_ENV === 'development'
       ? { kind: 'local' }
       : {
-        kind: 'cloud',
+        kind: 'github',
         repo: 'dev-coding-for-fun/tabvar-keystatic',
       },
   cloud: {
