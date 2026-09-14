@@ -11,6 +11,6 @@ const isBuild = process.argv.includes('build') || Boolean(process.env.CF_PAGES);
 // TABVAR static config
 export default defineConfig({
   output: 'static',
-  ...(isBuild ? { adapter: cloudflare({ imageService: 'passthrough' }) } : {}),
+  ...(isBuild ? { adapter: cloudflare({ imageService: 'passthrough', prerenderEnvironment: 'node' }) } : {}),
   integrations: [react(), markdoc(), keystatic()],
 });
