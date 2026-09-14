@@ -1,0 +1,30 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+
+export const prerender = true;
+
+const posts = await getCollection('posts');
+---
+
+<Layout title="TABVAR">
+  <main>
+    <h1>TABVAR</h1>
+    <p>
+      Association of Bow Valley Rockclimbers replacement site built with <strong>Astro</strong> and <strong>Keystatic</strong>.
+    </p>
+    <p>
+      In local development mode, you can access the <a href="/keystatic">Keystatic Admin UI</a> to edit content.
+    </p>
+    <h2>Recent Posts</h2>
+    <ul>
+      {
+        posts.map((post) => (
+          <li>
+            <a href={`/posts/${post.id}`}>{post.data.title}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </main>
+</Layout>
