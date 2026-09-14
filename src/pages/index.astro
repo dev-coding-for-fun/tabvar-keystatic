@@ -3,10 +3,25 @@ import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import DonorTiers from '../components/DonorTiers.astro';
 import SponsorShowcase from '../components/SponsorShowcase.astro';
+import { reader } from '../lib/keystatic';
 
 export const prerender = true;
 
 const posts = await getCollection('posts');
+const homeData = (await reader.singletons.home.read())!;
+const {
+	heroKicker = "Stewarding Bow Valley Rock Since 1994",
+	heroHeadline = "Safe Bolts. Trusted Anchors.",
+	heroHeadlineHighlight = "Enduring Lines.",
+	heroSubheadline = "TABVAR distributes 100% of community donations into marine-grade 316 stainless steel hardware, glue-in anchors, and retrofitting for rock, ice, and mixed climbs across the Canadian Rockies.",
+	heroStats = [],
+	heroImage = "/images/photos/Brian%20Spear%20on%20the%20FA%20%20of%20Gift%20Card.jpeg",
+	heroImageAlt = "Brian Spear on the First Ascent of Gift Card in Grotto Canyon",
+	heroImageTag = "First Ascent • Grotto Canyon",
+	heroImageCaption = "Brian Spear on the FA of Gift Card, protected by TABVAR-funded modern 316 stainless hardware.",
+	pillars = [],
+	stewardshipCards = [],
+} = homeData ?? {};
 ---
 
 <Layout title="TABVAR — Association of Bow Valley Rockclimbers">
@@ -16,15 +31,15 @@ const posts = await getCollection('posts');
 			<div class="hero-text-col">
 				<div class="hero-kicker">
 					<span class="kicker-dot"></span>
-					<span>Stewarding Bow Valley Rock Since 1994</span>
+					<span>{heroKicker}</span>
 				</div>
 
 				<h1 class="hero-headline">
-					Safe Bolts. Trusted Anchors. <span class="highlight-green">Enduring Lines.</span>
+					{heroHeadline} <span class="highlight-green">{heroHeadlineHighlight}</span>
 				</h1>
 
 				<p class="hero-subheadline">
-					TABVAR distributes 100% of community donations into marine-grade 316 stainless steel hardware, glue-in anchors, and retrofitting for rock, ice, and mixed climbs across the Canadian Rockies.
+					{heroSubheadline}
 				</p>
 
 				<div class="hero-actions">
@@ -39,33 +54,28 @@ const posts = await getCollection('posts');
 				</div>
 
 				<div class="hero-stats-strip">
-					<div class="stat-cell">
-						<span class="stat-number">$180k+</span>
-						<span class="stat-label">Hardware Funded</span>
-					</div>
-					<div class="stat-divider"></div>
-					<div class="stat-cell">
-						<span class="stat-number">113+</span>
-						<span class="stat-label">Pitches in 2025</span>
-					</div>
-					<div class="stat-divider"></div>
-					<div class="stat-cell">
-						<span class="stat-number">100%</span>
-						<span class="stat-label">Volunteer Run</span>
-					</div>
+					{heroStats.map((stat, idx) => (
+						<>
+							{idx > 0 && <div class="stat-divider"></div>}
+							<div class="stat-cell">
+								<span class="stat-number">{stat.number}</span>
+								<span class="stat-label">{stat.label}</span>
+							</div>
+						</>
+					))}
 				</div>
 			</div>
 
 			<div class="hero-visual-col">
 				<div class="corner-brackets visual-card-frame">
 					<img
-						src="/images/photos/Brian%20Spear%20on%20the%20FA%20%20of%20Gift%20Card.jpeg"
-						alt="Brian Spear on the First Ascent of Gift Card in Grotto Canyon"
+						src={heroImage || "/images/photos/Brian%20Spear%20on%20the%20FA%20%20of%20Gift%20Card.jpeg"}
+						alt={heroImageAlt || "Brian Spear on the First Ascent of Gift Card in Grotto Canyon"}
 						class="hero-img"
 					/>
 					<div class="visual-card-overlay">
-						<span class="overlay-tag">First Ascent &bull; Grotto Canyon</span>
-						<p class="overlay-text">Brian Spear on the FA of <em>Gift Card</em>, protected by TABVAR-funded modern 316 stainless hardware.</p>
+						<span class="overlay-tag">{heroImageTag}</span>
+						<p class="overlay-text">{heroImageCaption}</p>
 					</div>
 					<div class="floating-seal">
 						<img src="/images/brand/tabvar-seal.png" alt="Official Seal" class="floating-seal-img" />
@@ -138,41 +148,13 @@ const posts = await getCollection('posts');
 			</div>
 
 			<div class="pillars-grid">
-				<div class="pillar-box">
-					<div class="icon-tile">🛡️</div>
-					<h4>100% 316 Stainless Standard</h4>
-					<p>Eliminating legacy plated steel. TABVAR subsidizes and distributes marine-grade 316 stainless and AustriAlpin glue-in bolts.</p>
-				</div>
-
-				<div class="pillar-box">
-					<div class="icon-tile">⚡</div>
-					<h4>Active Issue Reporting</h4>
-					<p>Encounter a spinning hanger or worn anchor? Report it directly on app.tabvar.org so local volunteers can inspect it.</p>
-				</div>
-
-				<div class="pillar-box">
-					<div class="icon-tile">⛰️</div>
-					<h4>100% Volunteer Run</h4>
-					<p>Zero administrative overhead. Board members volunteer their time so every dollar goes directly into drills, chains, bolts, and glue.</p>
-				</div>
-
-				<div class="pillar-box">
-					<div class="icon-tile">📊</div>
-					<h4>Hardware Subsidies</h4>
-					<p>Funding new route development up to $2,250 for glue-ins, and unlimited reimbursement for replacing aging retrofits.</p>
-				</div>
-
-				<div class="pillar-box">
-					<div class="icon-tile">★</div>
-					<h4>15% Retail Partner Discounts</h4>
-					<p>Super Donors ($100+) receive 15% discounts at MEC, Monod Sports, Vertical Addiction, Canmore Climbing Gym, and UnParallel.</p>
-				</div>
-
-				<div class="pillar-box">
-					<div class="icon-tile">🏆</div>
-					<h4>The Golden Crowbar Award</h4>
-					<p>Annual community celebration recognizing outstanding route development and retrofitting across the Bow Valley.</p>
-				</div>
+				{pillars.map((pillar) => (
+					<div class="pillar-box">
+						<div class="icon-tile">{pillar.icon}</div>
+						<h4>{pillar.title}</h4>
+						<p>{pillar.description}</p>
+					</div>
+				))}
 			</div>
 		</div>
 	</section>
@@ -189,69 +171,23 @@ const posts = await getCollection('posts');
 			</div>
 
 			<div class="stewardship-grid">
-				<div class="stewardship-card corner-brackets">
-					<div class="stewardship-img-wrap">
-						<img
-							src="/images/photos/Brian%20Spear%20drilling%20-%20Gift%20Card%20-%20Grotto%20Canyon.jpeg"
-							alt="Brian Spear drilling bolt placements on rappel in Grotto Canyon"
-							class="stewardship-img"
-							loading="lazy"
-						/>
-						<span class="stewardship-badge">Route Development</span>
+				{stewardshipCards.map((card) => (
+					<div class="stewardship-card corner-brackets">
+						<div class="stewardship-img-wrap">
+							<img
+								src={card.image}
+								alt={card.title}
+								class="stewardship-img"
+								loading="lazy"
+							/>
+							<span class="stewardship-badge">{card.badge}</span>
+						</div>
+						<div class="stewardship-card-body">
+							<h4>{card.title}</h4>
+							<p>{card.description}</p>
+						</div>
 					</div>
-					<div class="stewardship-card-body">
-						<h4>Precision Bolting on Rappel</h4>
-						<p>Brian Spear drilling new sport lines on Grotto Canyon limestone, equipped with TABVAR-funded 316 stainless anchors.</p>
-					</div>
-				</div>
-
-				<div class="stewardship-card corner-brackets">
-					<div class="stewardship-img-wrap">
-						<img
-							src="/images/photos/Tobias%20demonstrating%20glue-ins%20%20IMG_6665.jpg"
-							alt="Tobias Link demonstrating glue-in bolt resin installation"
-							class="stewardship-img"
-							loading="lazy"
-						/>
-						<span class="stewardship-badge">Anchor Standards</span>
-					</div>
-					<div class="stewardship-card-body">
-						<h4>Glue-In Resin Technology</h4>
-						<p>TABVAR Director Tobias Link demonstrating proper epoxy extrusion and glue-in bolt seating for 50+ year anchor longevity.</p>
-					</div>
-				</div>
-
-				<div class="stewardship-card corner-brackets">
-					<div class="stewardship-img-wrap">
-						<img
-							src="/images/photos/Gords%20first%20retrobolting.jpg"
-							alt="Retrobolting and replacing aging hardware on Bow Valley rock"
-							class="stewardship-img"
-							loading="lazy"
-						/>
-						<span class="stewardship-badge">Crag Retrofitting</span>
-					</div>
-					<div class="stewardship-card-body">
-						<h4>Replacing Legacy Hardware</h4>
-						<p>Volunteers replacing decades-old plated steel bolts with marine-grade 316 stainless wedge anchors and modern chain stations.</p>
-					</div>
-				</div>
-
-				<div class="stewardship-card corner-brackets">
-					<div class="stewardship-img-wrap">
-						<img
-							src="/images/photos/Tabvar_Course-2023-58446.jpg"
-							alt="TABVAR Developer and Anchor Installation Course 2023"
-							class="stewardship-img"
-							loading="lazy"
-						/>
-						<span class="stewardship-badge">Volunteer Clinics</span>
-					</div>
-					<div class="stewardship-card-body">
-						<h4>Routebuilder Training Clinics</h4>
-						<p>Educating Bow Valley developers on safety standards, hole preparation, adhesive curing, and sustainable crag stewardship.</p>
-					</div>
-				</div>
+				))}
 			</div>
 		</div>
 	</section>

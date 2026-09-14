@@ -1,7 +1,16 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { reader } from "../lib/keystatic";
 
 export const prerender = true;
+
+const contactData = (await reader.singletons.contact.read())!;
+const {
+	heroBadge = "Volunteer Community Board",
+	heroTitle = "Get in Touch",
+	heroDescription = "Have questions about route claims, bulk hardware orders, donations, or corporate sponsorships? Reach out to our volunteer board members below.",
+	methods = [],
+} = contactData ?? {};
 ---
 
 <Layout
@@ -10,10 +19,10 @@ export const prerender = true;
 >
 	<div class="contact-hero">
 		<div class="container">
-			<span class="badge-info">Volunteer Community Board</span>
-			<h1>Get in Touch</h1>
+			<span class="badge-info">{heroBadge}</span>
+			<h1>{heroTitle}</h1>
 			<p class="hero-desc">
-				Have questions about route claims, bulk hardware orders, donations, or corporate sponsorships? Reach out to our volunteer board members below.
+				{heroDescription}
 			</p>
 		</div>
 	</div>
@@ -25,41 +34,16 @@ export const prerender = true;
 				<p>Because TABVAR is 100% volunteer run, directing your message to the appropriate officer ensures the fastest response:</p>
 
 				<div class="contact-methods">
-					<div class="contact-card">
-						<div class="icon-tile">📋</div>
-						<div class="contact-card-content">
-							<h4>Route Claims &amp; Retrofits</h4>
-							<p>Submit route topos, hardware invoices, and questions about reimbursement guidelines.</p>
-							<a href="mailto:claims@tabvar.org" class="contact-email">claims@tabvar.org &rarr;</a>
+					{methods.map((method) => (
+						<div class="contact-card">
+							<div class="icon-tile">{method.icon}</div>
+							<div class="contact-card-content">
+								<h4>{method.title}</h4>
+								<p>{method.description}</p>
+								<a href={`mailto:${method.email}`} class="contact-email">{method.email} &rarr;</a>
+							</div>
 						</div>
-					</div>
-
-					<div class="contact-card">
-						<div class="icon-tile">📦</div>
-						<div class="contact-card-content">
-							<h4>Bulk Hardware Orders</h4>
-							<p>Winter hardware consolidation, order forms, and e-transfer payment verifications.</p>
-							<a href="mailto:accounting@tabvar.org" class="contact-email">accounting@tabvar.org &rarr;</a>
-						</div>
-					</div>
-
-					<div class="contact-card">
-						<div class="icon-tile">🤝</div>
-						<div class="contact-card-content">
-							<h4>Donations &amp; Sponsorships</h4>
-							<p>Supporting donor tier queries, retail partner discounts, and brand sponsorship proposals.</p>
-							<a href="mailto:donations@tabvar.org" class="contact-email">donations@tabvar.org &rarr;</a>
-						</div>
-					</div>
-
-					<div class="contact-card">
-						<div class="icon-tile">⛰️</div>
-						<div class="contact-card-content">
-							<h4>President &amp; Board Governance</h4>
-							<p>General inquiries, access considerations, society governance, and community feedback.</p>
-							<a href="mailto:president@tabvar.org" class="contact-email">president@tabvar.org &rarr;</a>
-						</div>
-					</div>
+					))}
 				</div>
 			</div>
 

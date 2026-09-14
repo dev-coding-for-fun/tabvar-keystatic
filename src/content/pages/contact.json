@@ -1,0 +1,31 @@
+﻿{
+  "heroBadge": "Volunteer Community Board",
+  "heroTitle": "Get in Touch",
+  "heroDescription": "Have questions about route claims, bulk hardware orders, donations, or corporate sponsorships? Reach out to our volunteer board members below.",
+  "methods": [
+    {
+      "icon": "📋",
+      "title": "Route Claims & Retrofits",
+      "description": "Submit route topos, hardware invoices, and questions about reimbursement guidelines.",
+      "email": "claims@tabvar.org"
+    },
+    {
+      "icon": "📦",
+      "title": "Bulk Hardware Orders",
+      "description": "Winter hardware consolidation, order forms, and e-transfer payment verifications.",
+      "email": "accounting@tabvar.org"
+    },
+    {
+      "icon": "🤝",
+      "title": "Donations & Sponsorships",
+      "description": "Supporting donor tier queries, retail partner discounts, and brand sponsorship proposals.",
+      "email": "donations@tabvar.org"
+    },
+    {
+      "icon": "⛰️",
+      "title": "President & Board Governance",
+      "description": "General inquiries, access considerations, society governance, and community feedback.",
+      "email": "president@tabvar.org"
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+﻿{
+  "heroKicker": "Stewarding Bow Valley Rock Since 1994",
+  "heroHeadline": "Safe Bolts. Trusted Anchors.",
+  "heroHeadlineHighlight": "Enduring Lines.",
+  "heroSubheadline": "TABVAR distributes 100% of community donations into marine-grade 316 stainless steel hardware, glue-in anchors, and retrofitting for rock, ice, and mixed climbs across the Canadian Rockies.",
+  "heroStats": [
+    {
+      "number": "$180k+",
+      "label": "Hardware Funded"
+    },
+    {
+      "number": "113+",
+      "label": "Pitches in 2025"
+    },
+    {
+      "number": "100%",
+      "label": "Volunteer Run"
+    }
+  ],
+  "heroImage": "/images/photos/Brian%20Spear%20on%20the%20FA%20%20of%20Gift%20Card.jpeg",
+  "heroImageAlt": "Brian Spear on the First Ascent of Gift Card in Grotto Canyon",
+  "heroImageTag": "First Ascent • Grotto Canyon",
+  "heroImageCaption": "Brian Spear on the FA of Gift Card, protected by TABVAR-funded modern 316 stainless hardware.",
+  "pillars": [
+    {
+      "icon": "🛡️",
+      "title": "100% 316 Stainless Standard",
+      "description": "Eliminating legacy plated steel. TABVAR subsidizes and distributes marine-grade 316 stainless and AustriAlpin glue-in bolts."
+    },
+    {
+      "icon": "⚡",
+      "title": "Active Issue Reporting",
+      "description": "Encounter a spinning hanger or worn anchor? Report it directly on app.tabvar.org so local volunteers can inspect it."
+    },
+    {
+      "icon": "⛰️",
+      "title": "100% Volunteer Run",
+      "description": "Zero administrative overhead. Board members volunteer their time so every dollar goes directly into drills, chains, bolts, and glue."
+    },
+    {
+      "icon": "📊",
+      "title": "Hardware Subsidies",
+      "description": "Funding new route development up to $2,250 for glue-ins, and unlimited reimbursement for replacing aging retrofits."
+    },
+    {
+      "icon": "★",
+      "title": "15% Retail Partner Discounts",
+      "description": "Super Donors ($100+) receive 15% discounts at MEC, Monod Sports, Vertical Addiction, Canmore Climbing Gym, and UnParallel."
+    },
+    {
+      "icon": "🏆",
+      "title": "The Golden Crowbar Award",
+      "description": "Annual community celebration recognizing outstanding route development and retrofitting across the Bow Valley."
+    }
+  ],
+  "stewardshipCards": [
+    {
+      "image": "/images/photos/Brian%20Spear%20drilling%20-%20Gift%20Card%20-%20Grotto%20Canyon.jpeg",
+      "badge": "Route Development",
+      "title": "Precision Bolting on Rappel",
+      "description": "Brian Spear drilling new sport lines on Grotto Canyon limestone, equipped with TABVAR-funded 316 stainless anchors."
+    },
+    {
+      "image": "/images/photos/Tobias%20demonstrating%20glue-ins%20%20IMG_6665.jpg",
+      "badge": "Anchor Standards",
+      "title": "Glue-In Resin Technology",
+      "description": "TABVAR Director Tobias Link demonstrating proper epoxy extrusion and glue-in bolt seating for 50+ year anchor longevity."
+    },
+    {
+      "image": "/images/photos/Gords%20first%20retrobolting.jpg",
+      "badge": "Crag Retrofitting",
+      "title": "Replacing Legacy Hardware",
+      "description": "Volunteers replacing decades-old plated steel bolts with marine-grade 316 stainless wedge anchors and modern chain stations."
+    },
+    {
+      "image": "/images/photos/Tabvar_Course-2023-58446.jpg",
+      "badge": "Volunteer Clinics",
+      "title": "Routebuilder Training Clinics",
+      "description": "Educating Bow Valley developers on safety standards, hole preparation, adhesive curing, and sustainable crag stewardship."
+    }
+  ]
+}

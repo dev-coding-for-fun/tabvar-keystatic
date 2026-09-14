@@ -1,51 +1,31 @@
 ---
+import { reader } from "../lib/keystatic";
+
 interface Props {
 	stripeUrlSupporter?: string;
 	stripeUrlSuper?: string;
 }
 
 const {
-	stripeUrlSupporter = "https://donate.stripe.com/tabvar_supporter_40",
-	stripeUrlSuper = "https://donate.stripe.com/tabvar_super_supporter_100",
+	stripeUrlSupporter,
+	stripeUrlSuper,
 } = Astro.props;
 
-const tiers = [
-	{
-		name: "TABVAR Supporter",
-		amount: "$40",
-		cadence: "per year",
-		description: "Directly funds the replacement of aging anchors and new route development across the Bow Valley.",
-		highlighted: false,
-		badge: "Annual Giving",
-		ctaLabel: "Select $40 Supporter",
-		ctaUrl: stripeUrlSupporter,
-		features: [
-			"Directly funds 4 stainless steel expansion bolts & hangers",
-			"Early Access to newly approved Bow Valley route maps",
-			"1× Entry into the Annual Climbing Swag Raffle ($1,500+ prizes)",
-			"Official TABVAR Supporter recognition & digital badge",
-		],
-	},
-	{
-		name: "Super Supporter",
-		amount: "$100",
-		cadence: "per year",
-		description: "Our highest-impact community tier, unlocking exclusive retailer discounts that pay for themselves.",
-		highlighted: true,
-		badge: "★ Most Popular Community Tier",
-		ctaLabel: "Join Super Supporter — $100",
-		ctaUrl: stripeUrlSuper,
-		features: [
-			"All Supporter perks & Guidemap early access included",
-			"15% OFF at Mountain Equipment Company (MEC)",
-			"15% OFF at Monod Sports (Banff)",
-			"15% OFF at Vertical Addiction (Canmore)",
-			"15% OFF at Canmore Climbing Gym",
-			"15% OFF online code for UnParallel Climbing Shoes",
-			"5× Entries in the Annual October Prize Raffle",
-		],
-	},
-];
+const donateData = (await reader.singletons.donate.read())!;
+const configuredTiers = donateData?.tiers ?? [];
+
+const tiers = configuredTiers.map((t) => {
+	let ctaUrl = t.ctaUrl;
+	if (stripeUrlSupporter && t.name.toLowerCase().includes("supporter") && !t.name.toLowerCase().includes("super")) {
+		ctaUrl = stripeUrlSupporter;
+	} else if (stripeUrlSuper && t.name.toLowerCase().includes("super")) {
+		ctaUrl = stripeUrlSuper;
+	}
+	return {
+		...t,
+		ctaUrl,
+	};
+});
 ---
 
 <section class="donor-tiers-section" id="donor-program">

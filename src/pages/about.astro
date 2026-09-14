@@ -1,39 +1,27 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { reader } from "../lib/keystatic";
 
 export const prerender = true;
 
-const board = [
-	{ name: "Steve Fedyna", role: "President" },
-	{ name: "Susan Twitchell", role: "Secretary" },
-	{ name: "Al Black", role: "Director" },
-	{ name: "Tobias Link", role: "Director" },
-	{ name: "Martin Garneau", role: "Director" },
-	{ name: "Greg Barrett", role: "Director" },
-	{ name: "Brendan Clark", role: "Director" },
-	{ name: "Devin Serink", role: "Director" },
-	{ name: "Matthew Laird", role: "Community Engagement Officer" },
-	{ name: "Sara Lilley", role: "Community Engagement Officer" },
-];
-
-const annualReports = [
-	{ year: "2025", label: "TABVAR 2025 Annual Report", url: "https://tabvar.org/about/annualreports" },
-	{ year: "2024", label: "TABVAR 2024 Annual Report", url: "https://tabvar.org/about/annualreports" },
-	{ year: "2023", label: "TABVAR 2023 Annual Report (141 pitches, 35 retrofits)", url: "https://tabvar.org/about/annualreports" },
-	{ year: "2022", label: "TABVAR 2022 Annual Report", url: "https://tabvar.org/about/annualreports" },
-	{ year: "2021", label: "TABVAR 2021 Annual Report", url: "https://tabvar.org/about/annualreports" },
-	{ year: "2020", label: "TABVAR 2020 Annual Report", url: "https://tabvar.org/about/annualreports" },
-	{ year: "2019", label: "TABVAR 2019 Annual Report", url: "https://tabvar.org/about/annualreports" },
-	{ year: "2018", label: "TABVAR 2018 Annual Report", url: "https://tabvar.org/about/annualreports" },
-	{ year: "2017", label: "TABVAR 2017 Annual Report", url: "https://tabvar.org/about/annualreports" },
-	{ year: "2016", label: "TABVAR 2016 Annual Report", url: "https://tabvar.org/about/annualreports" },
-	{ year: "2015", label: "TABVAR 2015 Annual Report", url: "https://tabvar.org/about/annualreports" },
-	{ year: "2014", label: "TABVAR 2014 Annual Report", url: "https://tabvar.org/about/annualreports" },
-	{ year: "2013", label: "TABVAR 2013 Annual Report", url: "https://tabvar.org/about/annualreports" },
-	{ year: "2012", label: "TABVAR 2012 Annual Report", url: "https://tabvar.org/about/annualreports" },
-	{ year: "2011", label: "TABVAR 2011 Annual Report", url: "https://tabvar.org/about/annualreports" },
-	{ year: "2010", label: "TABVAR 2010 Annual Report", url: "https://tabvar.org/about/annualreports" },
-];
+const about = (await reader.singletons.about.read())!;
+const {
+	heroBadge = "Our Mandate & Stewardship",
+	heroTitle = "About TABVAR",
+	heroDescription = "Founded in 1994, The Association of Bow Valley Area Rockclimbers is a 100% volunteer-run registered non-profit dedicated to funding fixed hardware, anchors, and crag maintenance throughout the Canadian Rockies.",
+	mandateCards = [],
+	retroboltingImage = "/images/photos/20190825_121124_GrottoRetrobolting.jpg",
+	retroboltingTag = "Community Retrobolting",
+	retroboltingCaption = "TABVAR volunteers and active route developers collaborating on anchor upgrades in Grotto Canyon.",
+	memorialTag = "In Memoriam",
+	memorialTitle = "Jon W. Jones (1950 – 2022)",
+	memorialRole = "Founder & Past President",
+	memorialBio = [],
+	clinicImage = "/images/photos/Tabvar_Course-2023-58446.jpg",
+	clinicCaption = "TABVAR Volunteer Leadership & Routebuilder Community: Board directors and Bow Valley developers gather annually to align on modern glue-in bolting, torque mechanics, and crag conservation.",
+	board = [],
+	annualReports = [],
+} = about ?? {};
 ---
 
 <Layout
@@ -42,10 +30,10 @@ const annualReports = [
 >
 	<div class="about-hero">
 		<div class="container">
-			<span class="badge-info">Our Mandate &amp; Stewardship</span>
-			<h1>About TABVAR</h1>
+			<span class="badge-info">{heroBadge}</span>
+			<h1>{heroTitle}</h1>
 			<p class="hero-desc">
-				Founded in 1994, The Association of Bow Valley Area Rockclimbers is a 100% volunteer-run registered non-profit dedicated to funding fixed hardware, anchors, and crag maintenance throughout the Canadian Rockies.
+				{heroDescription}
 			</p>
 		</div>
 	</div>
@@ -55,34 +43,26 @@ const annualReports = [
 		<section class="about-section">
 			<h2>Our Purpose &amp; Impact</h2>
 			<div class="mandate-grid">
-				<div class="mandate-card">
-					<div class="mandate-icon">🔩</div>
-					<h3>Fixed Hardware Funding</h3>
-					<p>Raising and distributing funds to cover material costs for stainless steel expansion bolts, AustriAlpin glue-in anchors, and chains installed by active route builders.</p>
-				</div>
-				<div class="mandate-card">
-					<div class="mandate-icon">🔄</div>
-					<h3>Retrofitting &amp; Safety Upgrades</h3>
-					<p>Incentivizing the replacement of aging 1980s and 1990s plated hardware with zero funding caps for safety retrofits on established climbs.</p>
-				</div>
-				<div class="mandate-card">
-					<div class="mandate-icon">🤝</div>
-					<h3>100% Volunteer Driven</h3>
-					<p>Over $180,000 raised and distributed. With no salaries or offices, your donations go directly into equipment on the rock face.</p>
-				</div>
+				{mandateCards.map((card) => (
+					<div class="mandate-card">
+						<div class="mandate-icon">{card.icon}</div>
+						<h3>{card.title}</h3>
+						<p>{card.description}</p>
+					</div>
+				))}
 			</div>
 
 			<!-- Authentic Community Banner -->
 			<div class="about-action-banner corner-brackets">
 				<img
-					src="/images/photos/20190825_121124_GrottoRetrobolting.jpg"
-					alt="TABVAR volunteers and route developers during a community retrobolting campaign in Grotto Canyon"
+					src={retroboltingImage || "/images/photos/20190825_121124_GrottoRetrobolting.jpg"}
+					alt={retroboltingCaption}
 					class="about-banner-img"
 					loading="lazy"
 				/>
 				<div class="about-banner-overlay">
-					<span class="overlay-tag">Community Retrobolting</span>
-					<p class="overlay-caption">TABVAR volunteers and active route developers collaborating on anchor upgrades in Grotto Canyon.</p>
+					<span class="overlay-tag">{retroboltingTag}</span>
+					<p class="overlay-caption">{retroboltingCaption}</p>
 				</div>
 			</div>
 		</section>
@@ -91,15 +71,12 @@ const annualReports = [
 		<section id="jon-jones" class="about-section memorial-section">
 			<div class="memorial-inner corner-brackets">
 				<div class="memorial-content">
-					<span class="memorial-tag">In Memoriam</span>
-					<h2>Jon W. Jones (1950 &ndash; 2022)</h2>
-					<h4 class="memorial-role">Founder &amp; Past President</h4>
-					<p>
-						Jon Jones was the president of TABVAR from its founding in 1994 until his retirement in 2020. His relentless dedication to both fundraising and pioneering route development was the primary engine behind the Bow Valley becoming a vibrant, world-renowned climbing destination.
-					</p>
-					<p>
-						While best known for hundreds of modern sport routes, there is no shortage of bold, classic multipitches bearing his name. Jon was meticulous, detail-oriented, and passionately committed to steadily elevating the safety and installation standards of Bow Valley climbing.
-					</p>
+					<span class="memorial-tag">{memorialTag}</span>
+					<h2>{memorialTitle}</h2>
+					<h4 class="memorial-role">{memorialRole}</h4>
+					{memorialBio.map((paragraph) => (
+						<p>{paragraph}</p>
+					))}
 				</div>
 			</div>
 		</section>
@@ -113,13 +90,13 @@ const annualReports = [
 
 			<div class="board-clinic-feature corner-brackets">
 				<img
-					src="/images/photos/Tabvar_Course-2023-58446.jpg"
+					src={clinicImage || "/images/photos/Tabvar_Course-2023-58446.jpg"}
 					alt="TABVAR Directors and Bow Valley routebuilders at the annual anchor installation clinic"
 					class="board-clinic-img"
 					loading="lazy"
 				/>
 				<div class="board-clinic-caption">
-					<strong>TABVAR Volunteer Leadership &amp; Routebuilder Community:</strong> Board directors and Bow Valley developers gather annually to align on modern glue-in bolting, torque mechanics, and crag conservation.
+					{clinicCaption}
 				</div>
 			</div>
 

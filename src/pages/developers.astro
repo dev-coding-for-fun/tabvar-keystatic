@@ -1,11 +1,33 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { reader } from "../lib/keystatic";
 
 export const prerender = true;
 
+const devData = (await reader.singletons.developers.read())!;
+const {
+	heroBadge = "Bow Valley Routebuilder Portal",
+	heroTitle = "Route Developers & Retrofitters Hub",
+	heroDescription = "TABVAR has supported Bow Valley route developers and retrofitters since 1994. Here you will find our funding caps, claim spreadsheets, bulk hardware order schedules, and 316 stainless steel standards.",
+	seasonalBanner = {
+		mode: "auto",
+		bulkDeadlineText: "Bulk hardware orders are processed annually in winter. Deadline for orders is 16:00 MST on Tuesday, January 20. Delivery arrives for spring cragging.",
+		claimsDeadlineText: "New route and retrofit reimbursement claims for this season are due by August 1. Ensure your claim includes topos and approach beta.",
+	},
+	fundingCaps = [],
+	actionCardImage = "/images/photos/Tobias_drilling.jpg",
+	actionCardTag = "Community Routebuilders",
+	actionCardTitle = "Equipping Bow Valley Lines Since 1994",
+	actionCardDescription = "Active route developers volunteer hundreds of hours cleaning loose limestone, establishing classic lines, and installing certified hardware. TABVAR covers 100% of qualified hardware costs so climbers can enjoy safe, enduring routes.",
+	claimSteps = [],
+	bulkOrderImage = "/images/photos/Ian%20Hammering%20a%20wave%20bolt%20at%20Cowbell.JPG",
+	bulkOrderTitle = "Wholesale Consolidation for Maximum Value",
+	bulkOrderDescription = "TABVAR pools community orders directly with certified manufacturers, ensuring local route builders get top-tier 316 marine-grade hardware at unbeatable bulk rates before spring cragging begins.",
+} = devData ?? {};
+
 const month = new Date().getMonth(); // 0 = Jan, 11 = Dec
-const isBulkOrderSeason = month === 11 || month === 0 || month === 1;
-const isClaimsSeason = month >= 4 && month <= 7;
+const isBulkOrderSeason = seasonalBanner.mode === "bulk" || (seasonalBanner.mode === "auto" && (month === 11 || month === 0 || month === 1));
+const isClaimsSeason = seasonalBanner.mode === "claims" || (seasonalBanner.mode === "auto" && (month >= 4 && month <= 7));
 ---
 
 <Layout
@@ -14,10 +36,10 @@ const isClaimsSeason = month >= 4 && month <= 7;
 >
 	<div class="developers-hero">
 		<div class="container">
-			<span class="badge-alert">Bow Valley Routebuilder Portal</span>
-			<h1>Route Developers &amp; Retrofitters Hub</h1>
+			<span class="badge-alert">{heroBadge}</span>
+			<h1>{heroTitle}</h1>
 			<p class="hero-desc">
-				TABVAR has supported Bow Valley route developers and retrofitters since 1994. Here you will find our funding caps, claim spreadsheets, bulk hardware order schedules, and 316 stainless steel standards.
+				{heroDescription}
 			</p>
 			
 			<div class="quick-jump-bar">
@@ -36,7 +58,7 @@ const isClaimsSeason = month >= 4 && month <= 7;
 					<div class="alert-icon">📦</div>
 					<div class="alert-content">
 						<h3>Hardware Bulk Order Window Active</h3>
-						<p>Bulk hardware orders are processed annually in winter. Deadline for orders is <strong>16:00 MST on Tuesday, January 20</strong>. Delivery arrives for spring cragging.</p>
+						<p>{seasonalBanner.bulkDeadlineText}</p>
 					</div>
 					<a href="#bulk-orders" class="btn btn-primary">Go to Bulk Orders</a>
 				</div>
@@ -45,7 +67,7 @@ const isClaimsSeason = month >= 4 && month <= 7;
 					<div class="alert-icon">⏱️</div>
 					<div class="alert-content">
 						<h3>Route &amp; Retrofit Claims Season</h3>
-						<p>New route and retrofit reimbursement claims for this season are due by <strong>August 1</strong>. Ensure your claim includes topos and approach beta.</p>
+						<p>{seasonalBanner.claimsDeadlineText}</p>
 					</div>
 					<a href="#claims" class="btn btn-accent">Submit a Claim</a>
 				</div>
@@ -73,38 +95,30 @@ const isClaimsSeason = month >= 4 && month <= 7;
 			</p>
 
 			<div class="funding-caps-grid">
-				<div class="cap-card">
-					<div class="cap-amount">$1,500</div>
-					<div class="cap-type">Expansion Bolts</div>
-					<p class="cap-desc">Annual funding cap for new routes developed using 316 stainless steel mechanical expansion bolts.</p>
-				</div>
-				<div class="cap-card cap-highlight">
-					<div class="cap-amount">$2,250</div>
-					<div class="cap-type">Glue-In Anchors &amp; Bolts</div>
-					<p class="cap-desc">Higher subsidy cap to encourage long-lasting glue-in bolts and structural epoxy installations.</p>
-				</div>
-				<div class="cap-card">
-					<div class="cap-amount">No Limit</div>
-					<div class="cap-type">Retrofits &amp; Anchor Upgrades</div>
-					<p class="cap-desc">No annual dollar limit on legitimate retrofits replacing aging, dangerous, or plated hardware on established routes.</p>
-				</div>
+				{fundingCaps.map((cap) => (
+					<div class:list={["cap-card", { "cap-highlight": cap.highlighted }]}>
+						<div class="cap-amount">{cap.amount}</div>
+						<div class="cap-type">{cap.type}</div>
+						<p class="cap-desc">{cap.description}</p>
+					</div>
+				))}
 			</div>
 
 			<!-- Route Developer Action Card -->
 			<div class="dev-action-card corner-brackets">
 				<div class="dev-card-img-col">
 					<img
-						src="/images/photos/Tobias_drilling.jpg"
+						src={actionCardImage || "/images/photos/Tobias_drilling.jpg"}
 						alt="Routebuilder drilling bolt hole on Bow Valley rock"
 						class="dev-action-img"
 						loading="lazy"
 					/>
 				</div>
 				<div class="dev-card-text-col">
-					<span class="badge-tag">Community Routebuilders</span>
-					<h3>Equipping Bow Valley Lines Since 1994</h3>
+					<span class="badge-tag">{actionCardTag}</span>
+					<h3>{actionCardTitle}</h3>
 					<p>
-						Active route developers volunteer hundreds of hours cleaning loose limestone, establishing classic lines, and installing certified hardware. TABVAR covers 100% of qualified hardware costs so climbers can enjoy safe, enduring routes.
+						{actionCardDescription}
 					</p>
 					<div class="dev-card-perks">
 						<span class="perk-chip">🔩 100% 316 Stainless Subsidies</span>
@@ -117,21 +131,31 @@ const isClaimsSeason = month >= 4 && month <= 7;
 				<h3>How to Submit a Claim</h3>
 				<p class="steps-deadline">Submission Deadline: <strong>August 1</strong> (Annual)</p>
 				<ol class="submission-steps">
-					<li>
-						<strong>Read the Guidelines:</strong> Ensure your hardware meets the 100% 316 stainless steel requirement.
-					</li>
-					<li>
-						<strong>Copy the Spreadsheet:</strong> Make a copy of the official <a href="https://tabvar.org/routebuilders/submission-and-funding" target="_blank" rel="noopener noreferrer">New Route Claim Form</a> or <a href="https://tabvar.org/routebuilders/submission-and-funding" target="_blank" rel="noopener noreferrer">Retrofit Claim Form</a> in Google Sheets.
-					</li>
-					<li>
-						<strong>Name Your File:</strong> Include your full name in the spreadsheet file title.
-					</li>
-					<li>
-						<strong>Attach Topos &amp; Approach Info:</strong> For all new routes, put together a detailed route description and topo with approach directions. This is mandatory for claim processing.
-					</li>
-					<li>
-						<strong>Submit via Email:</strong> Email your completed spreadsheet and topo to <a href="mailto:claims@tabvar.org">claims@tabvar.org</a>. Confirmations are typically sent within two weeks.
-					</li>
+					{claimSteps.length > 0 ? (
+						claimSteps.map((step) => (
+							<li>
+								<strong>{step.title}:</strong> {step.description}
+							</li>
+						))
+					) : (
+						<>
+							<li>
+								<strong>Read the Guidelines:</strong> Ensure your hardware meets the 100% 316 stainless steel requirement.
+							</li>
+							<li>
+								<strong>Copy the Spreadsheet:</strong> Make a copy of the official <a href="https://tabvar.org/routebuilders/submission-and-funding" target="_blank" rel="noopener noreferrer">New Route Claim Form</a> or <a href="https://tabvar.org/routebuilders/submission-and-funding" target="_blank" rel="noopener noreferrer">Retrofit Claim Form</a> in Google Sheets.
+							</li>
+							<li>
+								<strong>Name Your File:</strong> Include your full name in the spreadsheet file title.
+							</li>
+							<li>
+								<strong>Attach Topos &amp; Approach Info:</strong> For all new routes, put together a detailed route description and topo with approach directions. This is mandatory for claim processing.
+							</li>
+							<li>
+								<strong>Submit via Email:</strong> Email your completed spreadsheet and topo to <a href="mailto:claims@tabvar.org">claims@tabvar.org</a>. Confirmations are typically sent within two weeks.
+							</li>
+						</>
+					)}
 				</ol>
 			</div>
 		</section>
@@ -175,15 +199,15 @@ const isClaimsSeason = month >= 4 && month <= 7;
 
 				<div class="bulk-order-visual corner-brackets">
 					<img
-						src="/images/photos/Ian%20Hammering%20a%20wave%20bolt%20at%20Cowbell.JPG"
+						src={bulkOrderImage || "/images/photos/Ian%20Hammering%20a%20wave%20bolt%20at%20Cowbell.JPG"}
 						alt="Ian hammering a wave bolt into limestone at Cowbell"
 						class="bulk-visual-img"
 						loading="lazy"
 					/>
 					<div class="bulk-visual-content">
-						<h4>Wholesale Consolidation for Maximum Value</h4>
+						<h4>{bulkOrderTitle}</h4>
 						<p>
-							TABVAR pools community orders directly with certified manufacturers, ensuring local route builders get top-tier 316 marine-grade hardware at unbeatable bulk rates before spring cragging begins.
+							{bulkOrderDescription}
 						</p>
 					</div>
 				</div>

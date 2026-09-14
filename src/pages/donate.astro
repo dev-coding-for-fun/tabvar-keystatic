@@ -1,8 +1,18 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import DonorTiers from "../components/DonorTiers.astro";
+import { reader } from "../lib/keystatic";
 
 export const prerender = true;
+
+const donateData = (await reader.singletons.donate.read())!;
+const {
+	heroBadge = "Climb It Forward",
+	heroTitle = "Support Bow Valley Climbing",
+	heroDescription = "TABVAR is a 100% volunteer-run registered non-profit. Every dollar received (outside of basic insurance and bank fees) directly purchases 316 marine-grade stainless steel bolts, anchors, chains, and drill supplies for local crags.",
+	impactCards = [],
+	retailRules = [],
+} = donateData ?? {};
 ---
 
 <Layout
@@ -11,10 +21,10 @@ export const prerender = true;
 >
 	<div class="donate-hero">
 		<div class="container">
-			<span class="badge-alert">Climb It Forward</span>
-			<h1>Support Bow Valley Climbing</h1>
+			<span class="badge-alert">{heroBadge}</span>
+			<h1>{heroTitle}</h1>
 			<p class="hero-desc">
-				TABVAR is a 100% volunteer-run registered non-profit. Every dollar received (outside of basic insurance and bank fees) directly purchases 316 marine-grade stainless steel bolts, anchors, chains, and drill supplies for local crags.
+				{heroDescription}
 			</p>
 		</div>
 	</div>
@@ -23,37 +33,23 @@ export const prerender = true;
 	<section class="impact-showcase-section">
 		<div class="container">
 			<div class="impact-grid">
-				<div class="impact-card corner-brackets">
-					<div class="impact-img-frame">
-						<img
-							src="/images/photos/Brian%20Spear%20drilling%20-%20Gift%20Card%20-%20Grotto%20Canyon.jpeg"
-							alt="Active route development and drilling in Grotto Canyon"
-							class="impact-img"
-							loading="lazy"
-						/>
-						<span class="impact-badge">Drills &amp; Hardware</span>
+				{impactCards.map((card) => (
+					<div class="impact-card corner-brackets">
+						<div class="impact-img-frame">
+							<img
+								src={card.image}
+								alt={card.title}
+								class="impact-img"
+								loading="lazy"
+							/>
+							<span class="impact-badge">{card.badge}</span>
+						</div>
+						<div class="impact-body">
+							<h3>{card.title}</h3>
+							<p>{card.description}</p>
+						</div>
 					</div>
-					<div class="impact-body">
-						<h3>Subsidizing New Lines</h3>
-						<p>Your dollars purchase heavy-duty SDS drill bits, batteries, and 316 stainless steel expansion bolts for active route developers.</p>
-					</div>
-				</div>
-
-				<div class="impact-card corner-brackets">
-					<div class="impact-img-frame">
-						<img
-							src="/images/photos/Tobias%20Checking%20a%20glue-in%20%20IMG_6669.jpeg"
-							alt="Inspecting cured 316 stainless glue-in anchor"
-							class="impact-img"
-							loading="lazy"
-						/>
-						<span class="impact-badge">Anchor Safety</span>
-					</div>
-					<div class="impact-body">
-						<h3>50+ Year Anchor Lifespans</h3>
-						<p>Replacing aging, rusted plated hangers with permanent marine-grade glue-in anchors that withstand decades of freeze-thaw cycles.</p>
-					</div>
-				</div>
+				))}
 			</div>
 		</div>
 	</section>
@@ -72,30 +68,12 @@ export const prerender = true;
 				</div>
 
 				<div class="retail-rules-grid">
-					<div class="rule-item">
-						<h4>Mountain Equipment Company (MEC)</h4>
-						<p>Orders can be made once per month on regular-priced items. Email orders only (not available directly at retail checkout). Full instructions provided in your donation receipt.</p>
-					</div>
-					<div class="rule-item">
-						<h4>Vertical Addiction (Canmore)</h4>
-						<p>Limited to climbing gear (harnesses, ropes, helmets, pro, carabiners, quickdraws, belay devices) and footwear (climbing shoes, approach shoes, hiking boots). One purchase per month.</p>
-					</div>
-					<div class="rule-item">
-						<h4>Monod Sports (Banff)</h4>
-						<p>Valid for in-store purchases on eligible mountain equipment. Show your donor confirmation email at checkout.</p>
-					</div>
-					<div class="rule-item">
-						<h4>Canmore Climbing Gym</h4>
-						<p>Eligible for gear and gym entry discounts. Details sent upon donation.</p>
-					</div>
-					<div class="rule-item">
-						<h4>UnParallel Climbing Shoes</h4>
-						<p>15% discount code valid for online purchases through the UnParallel webstore.</p>
-					</div>
-					<div class="rule-item">
-						<h4>Annual Guidemap Early Access</h4>
-						<p>Released every October featuring all newly approved crags, retrofits, and topos before general public release.</p>
-					</div>
+					{retailRules.map((rule) => (
+						<div class="rule-item">
+							<h4>{rule.retailer}</h4>
+							<p>{rule.terms}</p>
+						</div>
+					))}
 				</div>
 			</div>
 		</div>

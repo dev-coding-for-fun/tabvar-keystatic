@@ -1,0 +1,77 @@
+﻿{
+  "pillars": [
+    {
+      "name": "Mountain Equipment Company",
+      "shortName": "MEC",
+      "role": "Founding Partner & Major Sponsor",
+      "detail": "$44,000+ in grants and $50,000+ in hardware discounts",
+      "url": "https://www.mec.ca"
+    },
+    {
+      "name": "Wim & Nancy Pauw Foundation",
+      "shortName": "Pauw Foundation",
+      "role": "Retro-Bolting & Anchor Partner",
+      "detail": "Annual funding dedicated to Bow Valley anchor replacement",
+      "url": "https://pauwfoundation.com"
+    },
+    {
+      "name": "Alpine Club of Canada",
+      "shortName": "ACC",
+      "role": "Club & Chapter Support",
+      "detail": "Calgary, Rocky Mountain & Saskatchewan Chapters",
+      "url": "https://www.alpineclubofcanada.ca"
+    },
+    {
+      "name": "Micro Metal Software",
+      "shortName": "Micro Metal",
+      "role": "Corporate Patron",
+      "detail": "Generous long-term contributor to fixed hardware",
+      "url": ""
+    }
+  ],
+  "technical": [
+    {
+      "name": "AustriAlpin",
+      "detail": "1,250+ glue-in bolts supplied at community discount",
+      "url": "https://austrialpin.net"
+    },
+    {
+      "name": "Sika Canada",
+      "detail": "Epoxy and structural adhesive installation systems",
+      "url": "https://can.sika.com"
+    }
+  ],
+  "retailPerks": [
+    {
+      "name": "MEC",
+      "perk": "15% monthly discount"
+    },
+    {
+      "name": "Monod Sports",
+      "perk": "15% in-store discount"
+    },
+    {
+      "name": "Vertical Addiction",
+      "perk": "15% climbing gear & shoes"
+    },
+    {
+      "name": "Canmore Climbing Gym",
+      "perk": "15% pass & gear discount"
+    },
+    {
+      "name": "UnParallel Shoes",
+      "perk": "15% online footwear code"
+    }
+  ],
+  "community": [
+    "ACMG",
+    "Yamnuska Mountain Adventures",
+    "ArtsPlace Canmore",
+    "Park Distillery / Banff Hospitality",
+    "Calgary Climbing Centre",
+    "Devil's Head Coffee",
+    "Bowness Soapworks",
+    "Great Divide Mountaineering",
+    "51 Degrees North"
+  ]
+}

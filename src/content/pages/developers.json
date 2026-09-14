@@ -1,0 +1,59 @@
+﻿{
+  "heroBadge": "Bow Valley Routebuilder Portal",
+  "heroTitle": "Route Developers & Retrofitters Hub",
+  "heroDescription": "TABVAR has supported Bow Valley route developers and retrofitters since 1994. Here you will find our funding caps, claim spreadsheets, bulk hardware order schedules, and 316 stainless steel standards.",
+  "seasonalBanner": {
+    "mode": "auto",
+    "bulkDeadlineText": "Bulk hardware orders are processed annually in winter. Deadline for orders is 16:00 MST on Tuesday, January 20. Delivery arrives for spring cragging.",
+    "claimsDeadlineText": "New route and retrofit reimbursement claims for this season are due by August 1. Ensure your claim includes topos and approach beta."
+  },
+  "fundingCaps": [
+    {
+      "amount": "$1,500",
+      "type": "Expansion Bolts",
+      "description": "Annual funding cap for new routes developed using 316 stainless steel mechanical expansion bolts.",
+      "highlighted": false
+    },
+    {
+      "amount": "$2,250",
+      "type": "Glue-In Anchors & Bolts",
+      "description": "Higher subsidy cap to encourage long-lasting glue-in bolts and structural epoxy installations.",
+      "highlighted": true
+    },
+    {
+      "amount": "No Limit",
+      "type": "Retrofits & Anchor Upgrades",
+      "description": "No annual dollar limit on legitimate retrofits replacing aging, dangerous, or plated hardware on established routes.",
+      "highlighted": false
+    }
+  ],
+  "actionCardImage": "/images/photos/Tobias_drilling.jpg",
+  "actionCardTag": "Community Routebuilders",
+  "actionCardTitle": "Equipping Bow Valley Lines Since 1994",
+  "actionCardDescription": "Active route developers volunteer hundreds of hours cleaning loose limestone, establishing classic lines, and installing certified hardware. TABVAR covers 100% of qualified hardware costs so climbers can enjoy safe, enduring routes.",
+  "claimSteps": [
+    {
+      "title": "Read the Guidelines",
+      "description": "Ensure your hardware meets the 100% 316 stainless steel requirement."
+    },
+    {
+      "title": "Copy the Spreadsheet",
+      "description": "Make a copy of the official New Route Claim Form or Retrofit Claim Form in Google Sheets."
+    },
+    {
+      "title": "Name Your File",
+      "description": "Include your full name in the spreadsheet file title."
+    },
+    {
+      "title": "Attach Topos & Approach Info",
+      "description": "For all new routes, put together a detailed route description and topo with approach directions. This is mandatory for claim processing."
+    },
+    {
+      "title": "Submit via Email",
+      "description": "Email your completed spreadsheet and topo to claims@tabvar.org. Confirmations are typically sent within two weeks."
+    }
+  ],
+  "bulkOrderImage": "/images/photos/Ian%20Hammering%20a%20wave%20bolt%20at%20Cowbell.JPG",
+  "bulkOrderTitle": "Wholesale Consolidation for Maximum Value",
+  "bulkOrderDescription": "TABVAR pools community orders directly with certified manufacturers, ensuring local route builders get top-tier 316 marine-grade hardware at unbeatable bulk rates before spring cragging begins."
+}

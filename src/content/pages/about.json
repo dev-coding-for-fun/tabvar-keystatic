@@ -1,0 +1,64 @@
+﻿{
+  "heroBadge": "Our Mandate & Stewardship",
+  "heroTitle": "About TABVAR",
+  "heroDescription": "Founded in 1994, The Association of Bow Valley Area Rockclimbers is a 100% volunteer-run registered non-profit dedicated to funding fixed hardware, anchors, and crag maintenance throughout the Canadian Rockies.",
+  "mandateCards": [
+    {
+      "icon": "🔩",
+      "title": "Fixed Hardware Funding",
+      "description": "Raising and distributing funds to cover material costs for stainless steel expansion bolts, AustriAlpin glue-in anchors, and chains installed by active route builders."
+    },
+    {
+      "icon": "🔄",
+      "title": "Retrofitting & Safety Upgrades",
+      "description": "Incentivizing the replacement of aging 1980s and 1990s plated hardware with zero funding caps for safety retrofits on established climbs."
+    },
+    {
+      "icon": "🤝",
+      "title": "100% Volunteer Driven",
+      "description": "Over $180,000 raised and distributed. With no salaries or offices, your donations go directly into equipment on the rock face."
+    }
+  ],
+  "retroboltingImage": "/images/photos/20190825_121124_GrottoRetrobolting.jpg",
+  "retroboltingTag": "Community Retrobolting",
+  "retroboltingCaption": "TABVAR volunteers and active route developers collaborating on anchor upgrades in Grotto Canyon.",
+  "memorialTag": "In Memoriam",
+  "memorialTitle": "Jon W. Jones (1950 – 2022)",
+  "memorialRole": "Founder & Past President",
+  "memorialBio": [
+    "Jon Jones was the president of TABVAR from its founding in 1994 until his retirement in 2020. His relentless dedication to both fundraising and pioneering route development was the primary engine behind the Bow Valley becoming a vibrant, world-renowned climbing destination.",
+    "While best known for hundreds of modern sport routes, there is no shortage of bold, classic multipitches bearing his name. Jon was meticulous, detail-oriented, and passionately committed to steadily elevating the safety and installation standards of Bow Valley climbing."
+  ],
+  "clinicImage": "/images/photos/Tabvar_Course-2023-58446.jpg",
+  "clinicCaption": "TABVAR Volunteer Leadership & Routebuilder Community: Board directors and Bow Valley developers gather annually to align on modern glue-in bolting, torque mechanics, and crag conservation.",
+  "board": [
+    { "name": "Steve Fedyna", "role": "President" },
+    { "name": "Susan Twitchell", "role": "Secretary" },
+    { "name": "Al Black", "role": "Director" },
+    { "name": "Tobias Link", "role": "Director" },
+    { "name": "Martin Garneau", "role": "Director" },
+    { "name": "Greg Barrett", "role": "Director" },
+    { "name": "Brendan Clark", "role": "Director" },
+    { "name": "Devin Serink", "role": "Director" },
+    { "name": "Matthew Laird", "role": "Community Engagement Officer" },
+    { "name": "Sara Lilley", "role": "Community Engagement Officer" }
+  ],
+  "annualReports": [
+    { "year": "2025", "label": "TABVAR 2025 Annual Report", "url": "https://tabvar.org/about/annualreports" },
+    { "year": "2024", "label": "TABVAR 2024 Annual Report", "url": "https://tabvar.org/about/annualreports" },
+    { "year": "2023", "label": "TABVAR 2023 Annual Report (141 pitches, 35 retrofits)", "url": "https://tabvar.org/about/annualreports" },
+    { "year": "2022", "label": "TABVAR 2022 Annual Report", "url": "https://tabvar.org/about/annualreports" },
+    { "year": "2021", "label": "TABVAR 2021 Annual Report", "url": "https://tabvar.org/about/annualreports" },
+    { "year": "2020", "label": "TABVAR 2020 Annual Report", "url": "https://tabvar.org/about/annualreports" },
+    { "year": "2019", "label": "TABVAR 2019 Annual Report", "url": "https://tabvar.org/about/annualreports" },
+    { "year": "2018", "label": "TABVAR 2018 Annual Report", "url": "https://tabvar.org/about/annualreports" },
+    { "year": "2017", "label": "TABVAR 2017 Annual Report", "url": "https://tabvar.org/about/annualreports" },
+    { "year": "2016", "label": "TABVAR 2016 Annual Report", "url": "https://tabvar.org/about/annualreports" },
+    { "year": "2015", "label": "TABVAR 2015 Annual Report", "url": "https://tabvar.org/about/annualreports" },
+    { "year": "2014", "label": "TABVAR 2014 Annual Report", "url": "https://tabvar.org/about/annualreports" },
+    { "year": "2013", "label": "TABVAR 2013 Annual Report", "url": "https://tabvar.org/about/annualreports" },
+    { "year": "2012", "label": "TABVAR 2012 Annual Report", "url": "https://tabvar.org/about/annualreports" },
+    { "year": "2011", "label": "TABVAR 2011 Annual Report", "url": "https://tabvar.org/about/annualreports" },
+    { "year": "2010", "label": "TABVAR 2010 Annual Report", "url": "https://tabvar.org/about/annualreports" }
+  ]
+}

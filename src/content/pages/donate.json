@@ -1,0 +1,82 @@
+﻿{
+  "heroBadge": "Climb It Forward",
+  "heroTitle": "Support Bow Valley Climbing",
+  "heroDescription": "TABVAR is a 100% volunteer-run registered non-profit. Every dollar received (outside of basic insurance and bank fees) directly purchases 316 marine-grade stainless steel bolts, anchors, chains, and drill supplies for local crags.",
+  "impactCards": [
+    {
+      "image": "/images/photos/Brian%20Spear%20drilling%20-%20Gift%20Card%20-%20Grotto%20Canyon.jpeg",
+      "badge": "Drills & Hardware",
+      "title": "Subsidizing New Lines",
+      "description": "Your dollars purchase heavy-duty SDS drill bits, batteries, and 316 stainless steel expansion bolts for active route developers."
+    },
+    {
+      "image": "/images/photos/Tobias%20Checking%20a%20glue-in%20%20IMG_6669.jpeg",
+      "badge": "Anchor Safety",
+      "title": "50+ Year Anchor Lifespans",
+      "description": "Replacing aging, rusted plated hangers with permanent marine-grade glue-in anchors that withstand decades of freeze-thaw cycles."
+    }
+  ],
+  "tiers": [
+    {
+      "name": "TABVAR Supporter",
+      "amount": "$40",
+      "cadence": "per year",
+      "description": "Directly funds the replacement of aging anchors and new route development across the Bow Valley.",
+      "highlighted": false,
+      "badge": "Annual Giving",
+      "ctaLabel": "Select $40 Supporter",
+      "ctaUrl": "https://donate.stripe.com/tabvar_supporter_40",
+      "features": [
+        "Directly funds 4 stainless steel expansion bolts & hangers",
+        "Early Access to newly approved Bow Valley route maps",
+        "1× Entry into the Annual Climbing Swag Raffle ($1,500+ prizes)",
+        "Official TABVAR Supporter recognition & digital badge"
+      ]
+    },
+    {
+      "name": "Super Supporter",
+      "amount": "$100",
+      "cadence": "per year",
+      "description": "Our highest-impact community tier, unlocking exclusive retailer discounts that pay for themselves.",
+      "highlighted": true,
+      "badge": "★ Most Popular Community Tier",
+      "ctaLabel": "Join Super Supporter — $100",
+      "ctaUrl": "https://donate.stripe.com/tabvar_super_supporter_100",
+      "features": [
+        "All Supporter perks & Guidemap early access included",
+        "15% OFF at Mountain Equipment Company (MEC)",
+        "15% OFF at Monod Sports (Banff)",
+        "15% OFF at Vertical Addiction (Canmore)",
+        "15% OFF at Canmore Climbing Gym",
+        "15% OFF online code for UnParallel Climbing Shoes",
+        "5× Entries in the Annual October Prize Raffle"
+      ]
+    }
+  ],
+  "retailRules": [
+    {
+      "retailer": "Mountain Equipment Company (MEC)",
+      "terms": "Orders can be made once per month on regular-priced items. Email orders only (not available directly at retail checkout). Full instructions provided in your donation receipt."
+    },
+    {
+      "retailer": "Vertical Addiction (Canmore)",
+      "terms": "Limited to climbing gear (harnesses, ropes, helmets, pro, carabiners, quickdraws, belay devices) and footwear (climbing shoes, approach shoes, hiking boots). One purchase per month."
+    },
+    {
+      "retailer": "Monod Sports (Banff)",
+      "terms": "Valid for in-store purchases on eligible mountain equipment. Show your donor confirmation email at checkout."
+    },
+    {
+      "retailer": "Canmore Climbing Gym",
+      "terms": "Eligible for gear and gym entry discounts. Details sent upon donation."
+    },
+    {
+      "retailer": "UnParallel Climbing Shoes",
+      "terms": "15% discount code valid for online purchases through the UnParallel webstore."
+    },
+    {
+      "retailer": "Annual Guidemap Early Access",
+      "terms": "Released every October featuring all newly approved crags, retrofits, and topos before general public release."
+    }
+  ]
+}
