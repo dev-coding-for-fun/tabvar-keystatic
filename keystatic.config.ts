@@ -5,9 +5,9 @@ export default config({
     process.env.NODE_ENV === 'development'
       ? { kind: 'local' }
       : {
-          kind: 'github',
-          repo: 'dev-coding-for-fun/tabvar-keystatic',
-        },
+        kind: 'cloud',
+        repo: 'dev-coding-for-fun/tabvar-keystatic',
+      },
   collections: {
     posts: collection({
       label: 'Posts',
