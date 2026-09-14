@@ -1,0 +1,257 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+export const prerender = true;
+---
+
+<Layout
+	title="Contact TABVAR"
+	description="Reach out to the TABVAR volunteer board regarding route claims, bulk hardware orders, sponsorships, and donations."
+>
+	<div class="contact-hero">
+		<div class="container">
+			<span class="badge-info">Volunteer Community Board</span>
+			<h1>Get in Touch</h1>
+			<p class="hero-desc">
+				Have questions about route claims, bulk hardware orders, donations, or corporate sponsorships? Reach out to our volunteer board members below.
+			</p>
+		</div>
+	</div>
+
+	<div class="container contact-body">
+		<div class="contact-grid">
+			<div class="contact-info">
+				<h2>Board Inquiries</h2>
+				<p>Because TABVAR is 100% volunteer run, directing your message to the appropriate officer ensures the fastest response:</p>
+
+				<div class="contact-methods">
+					<div class="contact-card">
+						<div class="icon-tile">📋</div>
+						<div class="contact-card-content">
+							<h4>Route Claims &amp; Retrofits</h4>
+							<p>Submit route topos, hardware invoices, and questions about reimbursement guidelines.</p>
+							<a href="mailto:claims@tabvar.org" class="contact-email">claims@tabvar.org &rarr;</a>
+						</div>
+					</div>
+
+					<div class="contact-card">
+						<div class="icon-tile">📦</div>
+						<div class="contact-card-content">
+							<h4>Bulk Hardware Orders</h4>
+							<p>Winter hardware consolidation, order forms, and e-transfer payment verifications.</p>
+							<a href="mailto:accounting@tabvar.org" class="contact-email">accounting@tabvar.org &rarr;</a>
+						</div>
+					</div>
+
+					<div class="contact-card">
+						<div class="icon-tile">🤝</div>
+						<div class="contact-card-content">
+							<h4>Donations &amp; Sponsorships</h4>
+							<p>Supporting donor tier queries, retail partner discounts, and brand sponsorship proposals.</p>
+							<a href="mailto:donations@tabvar.org" class="contact-email">donations@tabvar.org &rarr;</a>
+						</div>
+					</div>
+
+					<div class="contact-card">
+						<div class="icon-tile">⛰️</div>
+						<div class="contact-card-content">
+							<h4>President &amp; Board Governance</h4>
+							<p>General inquiries, access considerations, society governance, and community feedback.</p>
+							<a href="mailto:president@tabvar.org" class="contact-email">president@tabvar.org &rarr;</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="contact-form-col">
+				<div class="form-box corner-brackets">
+					<h3>Send a Message</h3>
+					<p class="form-intro">Fill out this quick note or email us directly at one of the addresses on the left.</p>
+
+					<form action="mailto:president@tabvar.org" method="get" enctype="text/plain" class="contact-form">
+						<div class="form-field">
+							<label for="name">Your Name</label>
+							<input type="text" id="name" name="name" required placeholder="Jane Climber" />
+						</div>
+
+						<div class="form-field">
+							<label for="email">Your Email</label>
+							<input type="email" id="email" name="email" required placeholder="jane@example.com" />
+						</div>
+
+						<div class="form-field">
+							<label for="subject">Topic</label>
+							<select id="subject" name="subject">
+								<option value="General Inquiry">General Inquiry</option>
+								<option value="Route Development Claim">Route Development Claim</option>
+								<option value="Bulk Hardware Order">Bulk Hardware Order</option>
+								<option value="Corporate Sponsorship">Corporate Sponsorship</option>
+								<option value="Donor Program Question">Donor Program Question</option>
+							</select>
+						</div>
+
+						<div class="form-field">
+							<label for="body">Message</label>
+							<textarea id="body" name="body" rows="5" required placeholder="How can we help?"></textarea>
+						</div>
+
+						<button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+							Open Email Client &rarr;
+						</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</Layout>
+
+<style is:global>
+	.contact-hero {
+		background: var(--color-surface);
+		border-bottom: 1px solid var(--color-border);
+		padding: var(--spacing-4xl) var(--spacing-lg);
+	}
+
+	.contact-hero h1 {
+		font-size: var(--font-size-4xl);
+		font-weight: var(--font-weight-display);
+		letter-spacing: var(--tracking-tight);
+		color: var(--color-text);
+		margin: var(--spacing-sm) 0;
+	}
+
+	.hero-desc {
+		font-size: var(--font-size-lg);
+		color: var(--color-muted);
+		max-width: 48rem;
+		line-height: var(--leading-normal);
+	}
+
+	.contact-body {
+		padding: var(--spacing-4xl) var(--spacing-lg);
+	}
+
+	.contact-grid {
+		display: grid;
+		grid-template-columns: 1.1fr 0.9fr;
+		gap: var(--spacing-4xl);
+		align-items: start;
+	}
+
+	.contact-info h2 {
+		font-size: var(--font-size-3xl);
+		margin-bottom: var(--spacing-xs);
+	}
+
+	.contact-info p {
+		color: var(--color-muted);
+		font-size: var(--font-size-base);
+		margin-bottom: var(--spacing-2xl);
+	}
+
+	.contact-methods {
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-lg);
+	}
+
+	.contact-card {
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		padding: var(--spacing-xl);
+		display: flex;
+		align-items: flex-start;
+		gap: var(--spacing-lg);
+		box-shadow: var(--shadow-sm);
+	}
+
+	.contact-card-content h4 {
+		font-size: var(--font-size-base);
+		color: var(--color-text);
+		margin-bottom: 0.2rem;
+	}
+
+	.contact-card-content p {
+		font-size: var(--font-size-sm);
+		color: var(--color-muted);
+		line-height: var(--leading-normal);
+		margin-bottom: var(--spacing-sm);
+	}
+
+	.contact-email {
+		font-size: var(--font-size-sm);
+		font-weight: 700;
+		color: var(--color-brand);
+	}
+
+	.contact-email:hover {
+		text-decoration: underline;
+	}
+
+	/* Form */
+	.form-box {
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		padding: var(--spacing-2xl);
+		box-shadow: var(--shadow);
+	}
+
+	.form-box h3 {
+		font-size: var(--font-size-2xl);
+		margin-bottom: var(--spacing-xs);
+	}
+
+	.form-intro {
+		font-size: var(--font-size-sm);
+		color: var(--color-muted);
+		margin-bottom: var(--spacing-xl);
+	}
+
+	.contact-form {
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-md);
+	}
+
+	.form-field {
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-xs);
+	}
+
+	.form-field label {
+		font-size: var(--font-size-xs);
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		color: var(--color-text);
+	}
+
+	.form-field input,
+	.form-field select,
+	.form-field textarea {
+		padding: var(--spacing-sm) var(--spacing-md);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius);
+		background: var(--color-bg);
+		color: var(--color-text);
+		font-family: inherit;
+		font-size: var(--font-size-sm);
+	}
+
+	.form-field input:focus,
+	.form-field select:focus,
+	.form-field textarea:focus {
+		outline: 2px solid var(--color-brand);
+		border-color: var(--color-brand);
+	}
+
+	@media (max-width: 850px) {
+		.contact-grid {
+			grid-template-columns: 1fr;
+			gap: var(--spacing-2xl);
+		}
+	}
+</style>

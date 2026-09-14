@@ -1,0 +1,358 @@
+---
+interface Props {
+	compact?: boolean;
+	showCta?: boolean;
+}
+
+const { compact = false, showCta = true } = Astro.props;
+
+const pillars = [
+	{
+		name: "Mountain Equipment Company",
+		shortName: "MEC",
+		role: "Founding Partner & Major Sponsor",
+		detail: "$44,000+ in grants and $50,000+ in hardware discounts",
+		url: "https://www.mec.ca",
+	},
+	{
+		name: "Wim & Nancy Pauw Foundation",
+		shortName: "Pauw Foundation",
+		role: "Retro-Bolting & Anchor Partner",
+		detail: "Annual funding dedicated to Bow Valley anchor replacement",
+		url: "https://pauwfoundation.com",
+	},
+	{
+		name: "Alpine Club of Canada",
+		shortName: "ACC",
+		role: "Club & Chapter Support",
+		detail: "Calgary, Rocky Mountain & Saskatchewan Chapters",
+		url: "https://www.alpineclubofcanada.ca",
+	},
+	{
+		name: "Micro Metal Software",
+		shortName: "Micro Metal",
+		role: "Corporate Patron",
+		detail: "Generous long-term contributor to fixed hardware",
+		url: null,
+	},
+];
+
+const technical = [
+	{
+		name: "AustriAlpin",
+		detail: "1,250+ glue-in bolts supplied at community discount",
+		url: "https://austrialpin.net",
+	},
+	{
+		name: "Sika Canada",
+		detail: "Epoxy and structural adhesive installation systems",
+		url: "https://can.sika.com",
+	},
+];
+
+const retailPerks = [
+	{ name: "MEC", perk: "15% monthly discount" },
+	{ name: "Monod Sports", perk: "15% in-store discount" },
+	{ name: "Vertical Addiction", perk: "15% climbing gear & shoes" },
+	{ name: "Canmore Climbing Gym", perk: "15% pass & gear discount" },
+	{ name: "UnParallel Shoes", perk: "15% online footwear code" },
+];
+
+const community = [
+	"ACMG",
+	"Yamnuska Mountain Adventures",
+	"ArtsPlace Canmore",
+	"Park Distillery / Banff Hospitality",
+	"Calgary Climbing Centre",
+	"Devil's Head Coffee",
+	"Bowness Soapworks",
+	"Great Divide Mountaineering",
+	"51 Degrees North",
+];
+---
+
+<section class:list={["sponsors-section", { "sponsors-compact": compact }]}>
+	<div class="sponsors-container">
+		<div class="section-header">
+			<span class="section-kicker">Stewardship Partners</span>
+			<h2 class="section-headline">Supported by Climbers &amp; Leading Mountain Brands</h2>
+			<p class="section-subheadline">
+				100% of donations and sponsor grants fund bolts, anchors, and drills. We are deeply grateful to the organizations that keep Bow Valley routes safe.
+			</p>
+		</div>
+
+		<!-- Major Pillar Partners -->
+		<div class="pillar-grid">
+			{pillars.map((p) => (
+				<div class="sponsor-card pillar-card">
+					<div class="card-tag">Pillar Partner</div>
+					<h3 class="sponsor-name">{p.name}</h3>
+					<p class="sponsor-role">{p.role}</p>
+					<p class="sponsor-detail">{p.detail}</p>
+					{p.url && (
+						<a href={p.url} target="_blank" rel="noopener noreferrer" class="sponsor-link">
+							Visit website ↗
+						</a>
+					)}
+				</div>
+			))}
+		</div>
+
+		<!-- Technical Suppliers & Retail Discounts -->
+		<div class="mid-grid">
+			<div class="mid-card">
+				<h4>Technical Hardware &amp; Adhesives</h4>
+				<div class="technical-list">
+					{technical.map((t) => (
+						<div class="tech-item">
+							<strong>{t.name}</strong>
+							<span>{t.detail}</span>
+							{t.url && (
+								<a href={t.url} target="_blank" rel="noopener noreferrer" class="tech-link">
+									Learn more ↗
+								</a>
+							)}
+						</div>
+					))}
+				</div>
+			</div>
+
+			<div class="mid-card">
+				<h4>15% Super Supporter Retail Partners</h4>
+				<div class="retail-pills">
+					{retailPerks.map((r) => (
+						<div class="retail-pill">
+							<span class="retail-name">{r.name}</span>
+							<span class="retail-perk">{r.perk}</span>
+						</div>
+					))}
+				</div>
+			</div>
+		</div>
+
+		<!-- Community Partners Strip -->
+		<div class="community-strip">
+			<span class="community-label">Community &amp; Raffle Donors:</span>
+			<div class="community-tags">
+				{community.map((name) => (
+					<span class="community-tag">{name}</span>
+				))}
+			</div>
+		</div>
+
+		{showCta && (
+			<div class="sponsor-cta">
+				<p>Interested in becoming a business partner or raffle contributor?</p>
+				<a href="/contact?subject=sponsorship" class="btn btn-secondary">
+					Partner With TABVAR
+				</a>
+			</div>
+		)}
+	</div>
+</section>
+
+<style is:global>
+	.sponsors-section {
+		padding: var(--spacing-4xl) var(--spacing-lg);
+		background-color: var(--color-surface);
+		border-top: 1px solid var(--color-border);
+	}
+
+	.sponsors-compact {
+		padding: var(--spacing-2xl) var(--spacing-lg);
+	}
+
+	.sponsors-container {
+		max-width: var(--wide-width);
+		margin: 0 auto;
+	}
+
+	.pillar-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+		gap: var(--spacing-lg);
+		margin-bottom: var(--spacing-2xl);
+	}
+
+	.sponsor-card {
+		background: var(--color-bg);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius);
+		padding: var(--spacing-xl);
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		box-shadow: var(--shadow-sm);
+		transition: border-color var(--transition-fast), transform var(--transition-fast);
+	}
+
+	.sponsor-card:hover {
+		border-color: var(--color-brand);
+		transform: translateY(-2px);
+	}
+
+	.card-tag {
+		font-size: var(--font-size-xs);
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: var(--color-brand);
+		margin-bottom: var(--spacing-xs);
+	}
+
+	.sponsor-name {
+		font-size: var(--font-size-lg);
+		font-weight: var(--font-weight-heading);
+		color: var(--color-text);
+		margin-bottom: var(--spacing-xs);
+	}
+
+	.sponsor-role {
+		font-size: var(--font-size-xs);
+		font-weight: 600;
+		color: var(--color-muted);
+		margin-bottom: var(--spacing-sm);
+	}
+
+	.sponsor-detail {
+		font-size: var(--font-size-sm);
+		color: var(--color-text);
+		line-height: var(--leading-normal);
+		margin-bottom: var(--spacing-md);
+		flex-grow: 1;
+	}
+
+	.sponsor-link {
+		font-size: var(--font-size-xs);
+		font-weight: 600;
+		color: var(--color-brand);
+		display: inline-flex;
+		align-items: center;
+		gap: 0.25rem;
+		text-decoration: none;
+	}
+
+	.sponsor-link:hover {
+		text-decoration: underline;
+	}
+
+	.mid-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+		gap: var(--spacing-lg);
+		margin-bottom: var(--spacing-2xl);
+	}
+
+	.mid-card {
+		background: var(--color-bg);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius);
+		padding: var(--spacing-xl);
+	}
+
+	.mid-card h4 {
+		font-size: var(--font-size-base);
+		font-weight: var(--font-weight-heading);
+		margin-bottom: var(--spacing-md);
+		color: var(--color-text);
+	}
+
+	.technical-list {
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-md);
+	}
+
+	.tech-item {
+		display: flex;
+		flex-direction: column;
+		gap: 0.2rem;
+		font-size: var(--font-size-sm);
+	}
+
+	.tech-item span {
+		color: var(--color-muted);
+	}
+
+	.tech-link {
+		font-size: var(--font-size-xs);
+		color: var(--color-brand);
+		font-weight: 600;
+	}
+
+	.retail-pills {
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-sm);
+	}
+
+	.retail-pill {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: var(--spacing-sm) var(--spacing-md);
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-sm);
+		font-size: var(--font-size-sm);
+	}
+
+	.retail-name {
+		font-weight: 600;
+		color: var(--color-text);
+	}
+
+	.retail-perk {
+		font-size: var(--font-size-xs);
+		color: var(--color-brand);
+		font-weight: 600;
+	}
+
+	.community-strip {
+		background: var(--color-bg);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius);
+		padding: var(--spacing-lg);
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: var(--spacing-md);
+		margin-bottom: var(--spacing-2xl);
+	}
+
+	.community-label {
+		font-size: var(--font-size-xs);
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		color: var(--color-muted);
+	}
+
+	.community-tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--spacing-xs);
+	}
+
+	.community-tag {
+		font-size: var(--font-size-xs);
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		padding: 0.2rem 0.6rem;
+		border-radius: var(--radius-full);
+		color: var(--color-text);
+	}
+
+	.sponsor-cta {
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: var(--spacing-sm);
+	}
+
+	.sponsor-cta p {
+		font-size: var(--font-size-sm);
+		color: var(--color-muted);
+	}
+</style>

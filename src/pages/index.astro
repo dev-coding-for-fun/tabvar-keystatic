@@ -1,30 +1,770 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
+import DonorTiers from '../components/DonorTiers.astro';
+import SponsorShowcase from '../components/SponsorShowcase.astro';
 
 export const prerender = true;
 
 const posts = await getCollection('posts');
 ---
 
-<Layout title="TABVAR">
-  <main>
-    <h1>TABVAR</h1>
-    <p>
-      Association of Bow Valley Rockclimbers replacement site built with <strong>Astro</strong> and <strong>Keystatic</strong>.
-    </p>
-    <p>
-      In local development mode, you can access the <a href="/keystatic">Keystatic Admin UI</a> to edit content.
-    </p>
-    <h2>Recent Posts</h2>
-    <ul>
-      {
-        posts.map((post) => (
-          <li>
-            <a href={`/posts/${post.id}`}>{post.data.title}</a>
-          </li>
-        ))
-      }
-    </ul>
-  </main>
+<Layout title="TABVAR — Association of Bow Valley Rockclimbers">
+	<!-- Hero Section -->
+	<section class="hero-section">
+		<div class="container hero-container">
+			<div class="hero-text-col">
+				<div class="hero-kicker">
+					<span class="kicker-dot"></span>
+					<span>Stewarding Bow Valley Rock Since 1994</span>
+				</div>
+
+				<h1 class="hero-headline">
+					Safe Bolts. Trusted Anchors. <span class="highlight-green">Enduring Lines.</span>
+				</h1>
+
+				<p class="hero-subheadline">
+					TABVAR distributes 100% of community donations into marine-grade 316 stainless steel hardware, glue-in anchors, and retrofitting for rock, ice, and mixed climbs across the Canadian Rockies.
+				</p>
+
+				<div class="hero-actions">
+					<a href="/donate" class="btn btn-primary btn-lg">
+						<span>Support Hardware Fund</span>
+						<span>&rarr;</span>
+					</a>
+					<a href="https://app.tabvar.org/topos/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-lg">
+						<span>Browse Crag Topos</span>
+						<span class="arrow-up">↗</span>
+					</a>
+				</div>
+
+				<div class="hero-stats-strip">
+					<div class="stat-cell">
+						<span class="stat-number">$180k+</span>
+						<span class="stat-label">Hardware Funded</span>
+					</div>
+					<div class="stat-divider"></div>
+					<div class="stat-cell">
+						<span class="stat-number">113+</span>
+						<span class="stat-label">Pitches in 2025</span>
+					</div>
+					<div class="stat-divider"></div>
+					<div class="stat-cell">
+						<span class="stat-number">100%</span>
+						<span class="stat-label">Volunteer Run</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="hero-visual-col">
+				<div class="corner-brackets visual-card-frame">
+					<img
+						src="/images/photos/Brian%20Spear%20on%20the%20FA%20%20of%20Gift%20Card.jpeg"
+						alt="Brian Spear on the First Ascent of Gift Card in Grotto Canyon"
+						class="hero-img"
+					/>
+					<div class="visual-card-overlay">
+						<span class="overlay-tag">First Ascent &bull; Grotto Canyon</span>
+						<p class="overlay-text">Brian Spear on the FA of <em>Gift Card</em>, protected by TABVAR-funded modern 316 stainless hardware.</p>
+					</div>
+					<div class="floating-seal">
+						<img src="/images/brand/tabvar-seal.png" alt="Official Seal" class="floating-seal-img" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Dual-Track Quick Navigation Ribbon -->
+	<section class="dual-track-section">
+		<div class="container dual-track-container">
+			<!-- Track 1: Climbers -->
+			<div class="track-card corner-brackets">
+				<div class="track-header">
+					<span class="track-tag">For Climbers</span>
+					<h3>Crag Beta &amp; Safety</h3>
+				</div>
+				<p>Access updated crag topos, stay informed on local route maintenance, and report spinning or damaged hardware.</p>
+				<div class="track-links">
+					<a href="https://app.tabvar.org/topos/" class="track-btn track-primary" target="_blank" rel="noopener noreferrer">
+						<span>Crag Topos &amp; Beta</span>
+						<span>↗</span>
+					</a>
+					<a href="https://app.tabvar.org/issues/create" class="track-btn track-alert" target="_blank" rel="noopener noreferrer">
+						<span>⚠️ Report Damaged Bolt / Anchor</span>
+						<span>↗</span>
+					</a>
+					<a href="https://app.tabvar.org/goldencrowbar" class="track-btn track-secondary" target="_blank" rel="noopener noreferrer">
+						<span>Golden Crowbar Awards</span>
+						<span>↗</span>
+					</a>
+				</div>
+			</div>
+
+			<!-- Track 2: Route Developers -->
+			<div class="track-card">
+				<div class="track-header">
+					<span class="track-tag tag-dev">For Route Developers</span>
+					<h3>Hardware, Funding &amp; Standards</h3>
+				</div>
+				<p>Claim reimbursement for new routes and retrofits, review 316 SS specs, and participate in annual bulk hardware orders.</p>
+				<div class="track-links">
+					<a href="/developers#claims" class="track-btn track-primary">
+						<span>Submit Route / Retrofit Claim</span>
+						<span>&rarr;</span>
+					</a>
+					<a href="/developers#bulk-orders" class="track-btn track-secondary">
+						<span>Bulk Hardware Orders (Winter)</span>
+						<span>&rarr;</span>
+					</a>
+					<a href="/developers#standards" class="track-btn track-secondary">
+						<span>316 SS &amp; Glue-In Standards</span>
+						<span>&rarr;</span>
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Ecosystem Pillars Section -->
+	<section class="pillars-section">
+		<div class="container">
+			<div class="section-header">
+				<span class="section-kicker">A Living Crag Ecosystem</span>
+				<h2 class="section-headline">Dedicated to Bow Valley Climbing Safety</h2>
+				<p class="section-subheadline">
+					Connecting climbers, route developers, and local businesses to preserve world-class climbing.
+				</p>
+			</div>
+
+			<div class="pillars-grid">
+				<div class="pillar-box">
+					<div class="icon-tile">🛡️</div>
+					<h4>100% 316 Stainless Standard</h4>
+					<p>Eliminating legacy plated steel. TABVAR subsidizes and distributes marine-grade 316 stainless and AustriAlpin glue-in bolts.</p>
+				</div>
+
+				<div class="pillar-box">
+					<div class="icon-tile">⚡</div>
+					<h4>Active Issue Reporting</h4>
+					<p>Encounter a spinning hanger or worn anchor? Report it directly on app.tabvar.org so local volunteers can inspect it.</p>
+				</div>
+
+				<div class="pillar-box">
+					<div class="icon-tile">⛰️</div>
+					<h4>100% Volunteer Run</h4>
+					<p>Zero administrative overhead. Board members volunteer their time so every dollar goes directly into drills, chains, bolts, and glue.</p>
+				</div>
+
+				<div class="pillar-box">
+					<div class="icon-tile">📊</div>
+					<h4>Hardware Subsidies</h4>
+					<p>Funding new route development up to $2,250 for glue-ins, and unlimited reimbursement for replacing aging retrofits.</p>
+				</div>
+
+				<div class="pillar-box">
+					<div class="icon-tile">★</div>
+					<h4>15% Retail Partner Discounts</h4>
+					<p>Super Donors ($100+) receive 15% discounts at MEC, Monod Sports, Vertical Addiction, Canmore Climbing Gym, and UnParallel.</p>
+				</div>
+
+				<div class="pillar-box">
+					<div class="icon-tile">🏆</div>
+					<h4>The Golden Crowbar Award</h4>
+					<p>Annual community celebration recognizing outstanding route development and retrofitting across the Bow Valley.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Stewardship & Community in Action Section -->
+	<section class="stewardship-section">
+		<div class="container">
+			<div class="section-header">
+				<span class="section-kicker">Bow Valley Crags in Action</span>
+				<h2 class="section-headline">Equipping Bow Valley Climbing</h2>
+				<p class="section-subheadline">
+					Every dollar donated goes directly onto the rock &mdash; subsidizing drill bits, training routebuilders, installing certified 316 stainless glue-in anchors, and retrofitting legacy hardware.
+				</p>
+			</div>
+
+			<div class="stewardship-grid">
+				<div class="stewardship-card corner-brackets">
+					<div class="stewardship-img-wrap">
+						<img
+							src="/images/photos/Brian%20Spear%20drilling%20-%20Gift%20Card%20-%20Grotto%20Canyon.jpeg"
+							alt="Brian Spear drilling bolt placements on rappel in Grotto Canyon"
+							class="stewardship-img"
+							loading="lazy"
+						/>
+						<span class="stewardship-badge">Route Development</span>
+					</div>
+					<div class="stewardship-card-body">
+						<h4>Precision Bolting on Rappel</h4>
+						<p>Brian Spear drilling new sport lines on Grotto Canyon limestone, equipped with TABVAR-funded 316 stainless anchors.</p>
+					</div>
+				</div>
+
+				<div class="stewardship-card corner-brackets">
+					<div class="stewardship-img-wrap">
+						<img
+							src="/images/photos/Tobias%20demonstrating%20glue-ins%20%20IMG_6665.jpg"
+							alt="Tobias Link demonstrating glue-in bolt resin installation"
+							class="stewardship-img"
+							loading="lazy"
+						/>
+						<span class="stewardship-badge">Anchor Standards</span>
+					</div>
+					<div class="stewardship-card-body">
+						<h4>Glue-In Resin Technology</h4>
+						<p>TABVAR Director Tobias Link demonstrating proper epoxy extrusion and glue-in bolt seating for 50+ year anchor longevity.</p>
+					</div>
+				</div>
+
+				<div class="stewardship-card corner-brackets">
+					<div class="stewardship-img-wrap">
+						<img
+							src="/images/photos/Gords%20first%20retrobolting.jpg"
+							alt="Retrobolting and replacing aging hardware on Bow Valley rock"
+							class="stewardship-img"
+							loading="lazy"
+						/>
+						<span class="stewardship-badge">Crag Retrofitting</span>
+					</div>
+					<div class="stewardship-card-body">
+						<h4>Replacing Legacy Hardware</h4>
+						<p>Volunteers replacing decades-old plated steel bolts with marine-grade 316 stainless wedge anchors and modern chain stations.</p>
+					</div>
+				</div>
+
+				<div class="stewardship-card corner-brackets">
+					<div class="stewardship-img-wrap">
+						<img
+							src="/images/photos/Tabvar_Course-2023-58446.jpg"
+							alt="TABVAR Developer and Anchor Installation Course 2023"
+							class="stewardship-img"
+							loading="lazy"
+						/>
+						<span class="stewardship-badge">Volunteer Clinics</span>
+					</div>
+					<div class="stewardship-card-body">
+						<h4>Routebuilder Training Clinics</h4>
+						<p>Educating Bow Valley developers on safety standards, hole preparation, adhesive curing, and sustainable crag stewardship.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- News & Updates from Keystatic -->
+	{posts.length > 0 && (
+		<section class="posts-section">
+			<div class="container">
+				<div class="posts-section-top">
+					<div>
+						<span class="section-kicker">Updates &amp; Notices</span>
+						<h3 class="section-headline">From the TABVAR Board</h3>
+					</div>
+					<a href="/posts" class="btn btn-secondary">View All News &rarr;</a>
+				</div>
+
+				<div class="posts-grid">
+					{posts.map((post) => (
+						<a href={`/posts/${post.id}`} class="post-card">
+							<span class="post-tag">Announcement</span>
+							<h4 class="post-title">{post.data.title}</h4>
+							<p class="post-preview">Read the latest community bulletin and route updates from TABVAR volunteers.</p>
+							<span class="post-read-more">Read announcement &rarr;</span>
+						</a>
+					))}
+				</div>
+			</div>
+		</section>
+	)}
+
+	<!-- Supporting Donor Tiers -->
+	<DonorTiers />
+
+	<!-- Sponsors & Partners Showcase -->
+	<SponsorShowcase />
 </Layout>
+
+<style is:global>
+	/* Hero Section */
+	.hero-section {
+		padding: var(--spacing-4xl) var(--spacing-lg) var(--spacing-3xl);
+		background-color: var(--color-bg);
+	}
+
+	.hero-container {
+		display: grid;
+		grid-template-columns: 1.15fr 0.85fr;
+		gap: var(--spacing-3xl);
+		align-items: center;
+	}
+
+	.hero-kicker {
+		display: inline-flex;
+		align-items: center;
+		gap: var(--spacing-sm);
+		padding: 0.3rem 0.85rem;
+		background: var(--color-brand-soft);
+		color: var(--color-brand);
+		border: 1px solid var(--color-brand-border);
+		border-radius: var(--radius-full);
+		font-size: var(--font-size-xs);
+		font-weight: 700;
+		margin-bottom: var(--spacing-lg);
+	}
+
+	.kicker-dot {
+		width: 7px;
+		height: 7px;
+		border-radius: 50%;
+		background-color: var(--color-brand);
+	}
+
+	.hero-headline {
+		font-size: var(--font-size-4xl);
+		font-weight: var(--font-weight-display);
+		letter-spacing: var(--tracking-tight);
+		line-height: var(--leading-tight);
+		color: var(--color-text);
+		margin-bottom: var(--spacing-lg);
+	}
+
+	.highlight-green {
+		color: var(--color-brand);
+	}
+
+	.hero-subheadline {
+		font-size: var(--font-size-lg);
+		color: var(--color-muted);
+		line-height: var(--leading-normal);
+		max-width: 36rem;
+		margin-bottom: var(--spacing-2xl);
+	}
+
+	.hero-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--spacing-md);
+		margin-bottom: var(--spacing-2xl);
+	}
+
+	.hero-stats-strip {
+		display: flex;
+		align-items: center;
+		gap: var(--spacing-xl);
+		padding-top: var(--spacing-xl);
+		border-top: 1px solid var(--color-border-subtle);
+		max-width: 32rem;
+	}
+
+	.stat-cell {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.stat-number {
+		font-size: var(--font-size-2xl);
+		font-weight: var(--font-weight-display);
+		color: var(--color-brand);
+		line-height: 1.1;
+	}
+
+	.stat-label {
+		font-size: var(--font-size-xs);
+		font-weight: 600;
+		color: var(--color-muted);
+		margin-top: 0.2rem;
+	}
+
+	.stat-divider {
+		width: 1px;
+		height: 2.2rem;
+		background: var(--color-border);
+	}
+
+	/* Hero Photography Visual Card */
+	.visual-card-frame {
+		position: relative;
+		border-radius: var(--radius-lg);
+		overflow: hidden;
+		border: 1px solid var(--color-border);
+		box-shadow: var(--shadow-lg);
+		background-color: var(--color-surface);
+	}
+
+	.hero-img {
+		width: 100%;
+		height: 480px;
+		object-fit: cover;
+		object-position: center 20%;
+		display: block;
+		filter: contrast(1.03);
+	}
+
+	.visual-card-overlay {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 70%, transparent 100%);
+		padding: var(--spacing-xl) var(--spacing-lg) var(--spacing-lg);
+		color: #ffffff;
+	}
+
+	.overlay-tag {
+		font-size: var(--font-size-xs);
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: #34d399;
+	}
+
+	.overlay-text {
+		font-size: var(--font-size-xs);
+		margin-top: 0.2rem;
+		opacity: 0.92;
+		color: #f3f4f6;
+	}
+
+	.floating-seal {
+		position: absolute;
+		top: var(--spacing-md);
+		right: var(--spacing-md);
+		width: 48px;
+		height: 48px;
+		background: rgba(255, 255, 255, 0.9);
+		border-radius: 50%;
+		padding: 4px;
+		box-shadow: var(--shadow-md);
+	}
+
+	.floating-seal-img {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+	}
+
+	/* Dual Track Navigation */
+	.dual-track-section {
+		padding: var(--spacing-2xl) var(--spacing-lg) var(--spacing-3xl);
+		background-color: var(--color-bg);
+	}
+
+	.dual-track-container {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+		gap: var(--spacing-xl);
+	}
+
+	.track-card {
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		padding: var(--spacing-2xl);
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		position: relative;
+		box-shadow: var(--shadow);
+		transition: border-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+	}
+
+	.track-card:hover {
+		border-color: var(--color-brand);
+		transform: translateY(-2px);
+		box-shadow: var(--shadow-lg);
+	}
+
+	.track-header {
+		margin-bottom: var(--spacing-md);
+	}
+
+	.track-tag {
+		font-size: var(--font-size-xs);
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: var(--color-brand);
+		display: block;
+		margin-bottom: var(--spacing-xs);
+	}
+
+	.tag-dev {
+		color: var(--color-accent);
+	}
+
+	.track-card h3 {
+		font-size: var(--font-size-2xl);
+		font-weight: var(--font-weight-heading);
+		color: var(--color-text);
+	}
+
+	.track-card p {
+		color: var(--color-muted);
+		font-size: var(--font-size-base);
+		line-height: var(--leading-normal);
+		margin-bottom: var(--spacing-xl);
+	}
+
+	.track-links {
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-sm);
+	}
+
+	.track-btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: var(--spacing-sm) var(--spacing-md);
+		border-radius: var(--radius);
+		font-size: var(--font-size-sm);
+		font-weight: 600;
+		text-decoration: none;
+		transition: all var(--transition-fast);
+	}
+
+	.track-primary {
+		background: var(--color-brand-soft);
+		color: var(--color-brand);
+		border: 1px solid var(--color-brand-border);
+	}
+
+	.track-primary:hover {
+		background: var(--color-brand);
+		color: #ffffff;
+	}
+
+	.track-alert {
+		background: var(--color-accent-soft);
+		color: var(--color-accent);
+		border: 1px solid var(--color-accent-border);
+	}
+
+	.track-alert:hover {
+		background: var(--color-accent);
+		color: #ffffff;
+	}
+
+	.track-secondary {
+		background: var(--color-bg);
+		color: var(--color-text);
+		border: 1px solid var(--color-border);
+	}
+
+	.track-secondary:hover {
+		border-color: var(--color-text);
+	}
+
+	/* Pillars Section */
+	.pillars-section {
+		padding: var(--spacing-4xl) var(--spacing-lg);
+		background-color: var(--color-surface);
+		border-top: 1px solid var(--color-border);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.pillars-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+		gap: var(--spacing-xl);
+	}
+
+	.pillar-box {
+		background: var(--color-bg);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius);
+		padding: var(--spacing-xl);
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-sm);
+		box-shadow: var(--shadow-sm);
+		transition: border-color var(--transition-fast);
+	}
+
+	.pillar-box:hover {
+		border-color: var(--color-brand);
+	}
+
+	.pillar-box h4 {
+		font-size: var(--font-size-lg);
+		font-weight: var(--font-weight-heading);
+		color: var(--color-text);
+	}
+
+	.pillar-box p {
+		font-size: var(--font-size-sm);
+		color: var(--color-muted);
+		line-height: var(--leading-normal);
+	}
+
+	/* Posts section */
+	.posts-section {
+		padding: var(--spacing-4xl) var(--spacing-lg);
+		background-color: var(--color-bg);
+	}
+
+	.posts-section-top {
+		display: flex;
+		align-items: flex-end;
+		justify-content: space-between;
+		margin-bottom: var(--spacing-2xl);
+		gap: var(--spacing-md);
+		flex-wrap: wrap;
+	}
+
+	.posts-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+		gap: var(--spacing-xl);
+	}
+
+	.post-card {
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius);
+		padding: var(--spacing-xl);
+		display: flex;
+		flex-direction: column;
+		box-shadow: var(--shadow-sm);
+		transition: transform var(--transition-fast), border-color var(--transition-fast);
+		text-decoration: none;
+	}
+
+	.post-card:hover {
+		transform: translateY(-2px);
+		border-color: var(--color-brand);
+	}
+
+	.post-tag {
+		font-size: var(--font-size-xs);
+		font-weight: 700;
+		color: var(--color-brand);
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		margin-bottom: var(--spacing-xs);
+	}
+
+	.post-title {
+		font-size: var(--font-size-xl);
+		font-weight: var(--font-weight-heading);
+		color: var(--color-text);
+		margin-bottom: var(--spacing-sm);
+	}
+
+	.post-preview {
+		font-size: var(--font-size-sm);
+		color: var(--color-muted);
+		line-height: var(--leading-normal);
+		margin-bottom: var(--spacing-md);
+		flex-grow: 1;
+	}
+
+	.post-read-more {
+		font-size: var(--font-size-sm);
+		font-weight: 600;
+		color: var(--color-brand);
+	}
+
+	/* Stewardship Photography Section */
+	.stewardship-section {
+		padding: var(--spacing-4xl) var(--spacing-lg);
+		background-color: var(--color-surface-alt);
+		border-top: 1px solid var(--color-border);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.stewardship-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+		gap: var(--spacing-xl);
+		margin-top: var(--spacing-3xl);
+	}
+
+	.stewardship-card {
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		overflow: hidden;
+		display: flex;
+		flex-direction: column;
+		box-shadow: var(--shadow-sm);
+		transition: transform var(--transition-fast), border-color var(--transition-fast);
+	}
+
+	.stewardship-card:hover {
+		transform: translateY(-3px);
+		border-color: var(--color-brand);
+		box-shadow: var(--shadow-md);
+	}
+
+	.stewardship-img-wrap {
+		position: relative;
+		width: 100%;
+		height: 220px;
+		background: #111;
+		overflow: hidden;
+	}
+
+	.stewardship-img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+		transition: transform var(--transition-normal);
+	}
+
+	.stewardship-card:hover .stewardship-img {
+		transform: scale(1.04);
+	}
+
+	.stewardship-badge {
+		position: absolute;
+		bottom: var(--spacing-sm);
+		left: var(--spacing-sm);
+		font-size: 0.68rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		background: rgba(20, 24, 25, 0.85);
+		backdrop-filter: blur(4px);
+		color: #34d399;
+		padding: 0.25rem 0.6rem;
+		border-radius: var(--radius-sm);
+		border: 1px solid rgba(52, 211, 153, 0.3);
+	}
+
+	.stewardship-card-body {
+		padding: var(--spacing-lg);
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.stewardship-card-body h4 {
+		font-size: var(--font-size-base);
+		font-weight: var(--font-weight-heading);
+		color: var(--color-text);
+		margin-bottom: var(--spacing-xs);
+	}
+
+	.stewardship-card-body p {
+		font-size: var(--font-size-xs);
+		color: var(--color-muted);
+		line-height: var(--leading-normal);
+	}
+
+	@media (max-width: 900px) {
+		.hero-container {
+			grid-template-columns: 1fr;
+		}
+
+		.hero-headline {
+			font-size: var(--font-size-3xl);
+		}
+	}
+</style>

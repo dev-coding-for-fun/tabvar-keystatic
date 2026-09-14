@@ -1,0 +1,417 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+export const prerender = true;
+
+const board = [
+	{ name: "Steve Fedyna", role: "President" },
+	{ name: "Susan Twitchell", role: "Secretary" },
+	{ name: "Al Black", role: "Director" },
+	{ name: "Tobias Link", role: "Director" },
+	{ name: "Martin Garneau", role: "Director" },
+	{ name: "Greg Barrett", role: "Director" },
+	{ name: "Brendan Clark", role: "Director" },
+	{ name: "Devin Serink", role: "Director" },
+	{ name: "Matthew Laird", role: "Community Engagement Officer" },
+	{ name: "Sara Lilley", role: "Community Engagement Officer" },
+];
+
+const annualReports = [
+	{ year: "2025", label: "TABVAR 2025 Annual Report", url: "https://tabvar.org/about/annualreports" },
+	{ year: "2024", label: "TABVAR 2024 Annual Report", url: "https://tabvar.org/about/annualreports" },
+	{ year: "2023", label: "TABVAR 2023 Annual Report (141 pitches, 35 retrofits)", url: "https://tabvar.org/about/annualreports" },
+	{ year: "2022", label: "TABVAR 2022 Annual Report", url: "https://tabvar.org/about/annualreports" },
+	{ year: "2021", label: "TABVAR 2021 Annual Report", url: "https://tabvar.org/about/annualreports" },
+	{ year: "2020", label: "TABVAR 2020 Annual Report", url: "https://tabvar.org/about/annualreports" },
+	{ year: "2019", label: "TABVAR 2019 Annual Report", url: "https://tabvar.org/about/annualreports" },
+	{ year: "2018", label: "TABVAR 2018 Annual Report", url: "https://tabvar.org/about/annualreports" },
+	{ year: "2017", label: "TABVAR 2017 Annual Report", url: "https://tabvar.org/about/annualreports" },
+	{ year: "2016", label: "TABVAR 2016 Annual Report", url: "https://tabvar.org/about/annualreports" },
+	{ year: "2015", label: "TABVAR 2015 Annual Report", url: "https://tabvar.org/about/annualreports" },
+	{ year: "2014", label: "TABVAR 2014 Annual Report", url: "https://tabvar.org/about/annualreports" },
+	{ year: "2013", label: "TABVAR 2013 Annual Report", url: "https://tabvar.org/about/annualreports" },
+	{ year: "2012", label: "TABVAR 2012 Annual Report", url: "https://tabvar.org/about/annualreports" },
+	{ year: "2011", label: "TABVAR 2011 Annual Report", url: "https://tabvar.org/about/annualreports" },
+	{ year: "2010", label: "TABVAR 2010 Annual Report", url: "https://tabvar.org/about/annualreports" },
+];
+---
+
+<Layout
+	title="About TABVAR &amp; Annual Reports"
+	description="Our mandate, the Jon Jones memorial legacy, the volunteer Board of Directors, and full historical annual reports from 2010 to present."
+>
+	<div class="about-hero">
+		<div class="container">
+			<span class="badge-info">Our Mandate &amp; Stewardship</span>
+			<h1>About TABVAR</h1>
+			<p class="hero-desc">
+				Founded in 1994, The Association of Bow Valley Area Rockclimbers is a 100% volunteer-run registered non-profit dedicated to funding fixed hardware, anchors, and crag maintenance throughout the Canadian Rockies.
+			</p>
+		</div>
+	</div>
+
+	<div class="container about-body">
+		<!-- Mandate & Impact -->
+		<section class="about-section">
+			<h2>Our Purpose &amp; Impact</h2>
+			<div class="mandate-grid">
+				<div class="mandate-card">
+					<div class="mandate-icon">🔩</div>
+					<h3>Fixed Hardware Funding</h3>
+					<p>Raising and distributing funds to cover material costs for stainless steel expansion bolts, AustriAlpin glue-in anchors, and chains installed by active route builders.</p>
+				</div>
+				<div class="mandate-card">
+					<div class="mandate-icon">🔄</div>
+					<h3>Retrofitting &amp; Safety Upgrades</h3>
+					<p>Incentivizing the replacement of aging 1980s and 1990s plated hardware with zero funding caps for safety retrofits on established climbs.</p>
+				</div>
+				<div class="mandate-card">
+					<div class="mandate-icon">🤝</div>
+					<h3>100% Volunteer Driven</h3>
+					<p>Over $180,000 raised and distributed. With no salaries or offices, your donations go directly into equipment on the rock face.</p>
+				</div>
+			</div>
+
+			<!-- Authentic Community Banner -->
+			<div class="about-action-banner corner-brackets">
+				<img
+					src="/images/photos/20190825_121124_GrottoRetrobolting.jpg"
+					alt="TABVAR volunteers and route developers during a community retrobolting campaign in Grotto Canyon"
+					class="about-banner-img"
+					loading="lazy"
+				/>
+				<div class="about-banner-overlay">
+					<span class="overlay-tag">Community Retrobolting</span>
+					<p class="overlay-caption">TABVAR volunteers and active route developers collaborating on anchor upgrades in Grotto Canyon.</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Jon Jones Memorial -->
+		<section id="jon-jones" class="about-section memorial-section">
+			<div class="memorial-inner corner-brackets">
+				<div class="memorial-content">
+					<span class="memorial-tag">In Memoriam</span>
+					<h2>Jon W. Jones (1950 &ndash; 2022)</h2>
+					<h4 class="memorial-role">Founder &amp; Past President</h4>
+					<p>
+						Jon Jones was the president of TABVAR from its founding in 1994 until his retirement in 2020. His relentless dedication to both fundraising and pioneering route development was the primary engine behind the Bow Valley becoming a vibrant, world-renowned climbing destination.
+					</p>
+					<p>
+						While best known for hundreds of modern sport routes, there is no shortage of bold, classic multipitches bearing his name. Jon was meticulous, detail-oriented, and passionately committed to steadily elevating the safety and installation standards of Bow Valley climbing.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Board of Directors -->
+		<section id="board" class="about-section">
+			<h2>Board of Directors</h2>
+			<p class="section-sub">
+				All TABVAR directors serve entirely as uncompensated community volunteers.
+			</p>
+
+			<div class="board-clinic-feature corner-brackets">
+				<img
+					src="/images/photos/Tabvar_Course-2023-58446.jpg"
+					alt="TABVAR Directors and Bow Valley routebuilders at the annual anchor installation clinic"
+					class="board-clinic-img"
+					loading="lazy"
+				/>
+				<div class="board-clinic-caption">
+					<strong>TABVAR Volunteer Leadership &amp; Routebuilder Community:</strong> Board directors and Bow Valley developers gather annually to align on modern glue-in bolting, torque mechanics, and crag conservation.
+				</div>
+			</div>
+
+			<div class="board-grid">
+				{board.map((member) => (
+					<div class="board-card">
+						<div class="board-name">{member.name}</div>
+						<div class="board-role">{member.role}</div>
+					</div>
+				))}
+			</div>
+		</section>
+
+		<!-- Annual Reports Archive -->
+		<section id="reports" class="about-section">
+			<h2>Annual Reports Archive</h2>
+			<p class="section-sub">
+				Complete transparency on funded pitches, retrofits, crag developments, and financial statements.
+			</p>
+
+			<div class="reports-grid">
+				{annualReports.map((report) => (
+					<a href={report.url} target="_blank" rel="noopener noreferrer" class="report-card">
+						<div class="report-year">{report.year}</div>
+						<div class="report-info">
+							<span class="report-title">{report.label}</span>
+							<span class="report-download">Download PDF ↗</span>
+						</div>
+					</a>
+				))}
+			</div>
+		</section>
+	</div>
+</Layout>
+
+<style is:global>
+	.about-hero {
+		background: var(--color-surface);
+		border-bottom: 1px solid var(--color-border);
+		padding: var(--spacing-4xl) var(--spacing-lg);
+	}
+
+	.about-hero h1 {
+		font-size: var(--font-size-4xl);
+		font-weight: var(--font-weight-display);
+		letter-spacing: var(--tracking-tight);
+		color: var(--color-text);
+		margin: var(--spacing-sm) 0;
+	}
+
+	.hero-desc {
+		font-size: var(--font-size-lg);
+		color: var(--color-muted);
+		max-width: 48rem;
+		line-height: var(--leading-normal);
+	}
+
+	.about-body {
+		padding: var(--spacing-4xl) var(--spacing-lg);
+	}
+
+	.about-section {
+		margin-bottom: var(--spacing-4xl);
+	}
+
+	.about-section h2 {
+		font-size: var(--font-size-3xl);
+		font-weight: var(--font-weight-heading);
+		color: var(--color-text);
+		margin-bottom: var(--spacing-sm);
+	}
+
+	.section-sub {
+		color: var(--color-muted);
+		font-size: var(--font-size-base);
+		margin-bottom: var(--spacing-2xl);
+	}
+
+	.mandate-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+		gap: var(--spacing-xl);
+		margin-top: var(--spacing-xl);
+	}
+
+	.mandate-card {
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		padding: var(--spacing-2xl);
+		box-shadow: var(--shadow-sm);
+	}
+
+	.mandate-icon {
+		font-size: 2rem;
+		margin-bottom: var(--spacing-md);
+	}
+
+	.mandate-card h3 {
+		font-size: var(--font-size-xl);
+		margin-bottom: var(--spacing-sm);
+	}
+
+	.mandate-card p {
+		font-size: var(--font-size-sm);
+		color: var(--color-muted);
+		line-height: var(--leading-normal);
+	}
+
+	/* Memorial */
+	.memorial-section {
+		margin: var(--spacing-4xl) 0;
+	}
+
+	.memorial-inner {
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		padding: var(--spacing-3xl);
+		box-shadow: var(--shadow);
+	}
+
+	.memorial-tag {
+		font-size: var(--font-size-xs);
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: var(--color-accent);
+		display: block;
+		margin-bottom: var(--spacing-xs);
+	}
+
+	.memorial-role {
+		font-size: var(--font-size-base);
+		color: var(--color-brand);
+		margin-bottom: var(--spacing-lg);
+	}
+
+	.memorial-content p {
+		font-size: var(--font-size-base);
+		color: var(--color-text);
+		line-height: var(--leading-relaxed);
+		margin-bottom: var(--spacing-md);
+		max-width: 52rem;
+	}
+
+	/* Board Grid */
+	.board-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+		gap: var(--spacing-md);
+	}
+
+	.board-card {
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius);
+		padding: var(--spacing-lg);
+		box-shadow: var(--shadow-sm);
+	}
+
+	.board-name {
+		font-weight: 700;
+		font-size: var(--font-size-base);
+		color: var(--color-text);
+	}
+
+	.board-role {
+		font-size: var(--font-size-xs);
+		color: var(--color-muted);
+		margin-top: 0.2rem;
+	}
+
+	/* Reports */
+	.reports-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+		gap: var(--spacing-md);
+	}
+
+	.report-card {
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius);
+		padding: var(--spacing-md) var(--spacing-lg);
+		display: flex;
+		align-items: center;
+		gap: var(--spacing-md);
+		box-shadow: var(--shadow-sm);
+		transition: border-color var(--transition-fast), transform var(--transition-fast);
+		text-decoration: none;
+	}
+
+	.report-card:hover {
+		border-color: var(--color-brand);
+		transform: translateY(-1px);
+	}
+
+	.report-year {
+		font-size: var(--font-size-xl);
+		font-weight: var(--font-weight-display);
+		color: var(--color-brand);
+	}
+
+	.report-info {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.report-title {
+		font-size: var(--font-size-sm);
+		font-weight: 600;
+		color: var(--color-text);
+	}
+
+	.report-download {
+		font-size: var(--font-size-xs);
+		color: var(--color-muted);
+		margin-top: 0.15rem;
+	}
+
+	/* About Action Banner */
+	.about-action-banner {
+		position: relative;
+		border-radius: var(--radius-lg);
+		overflow: hidden;
+		border: 1px solid var(--color-border);
+		box-shadow: var(--shadow-md);
+		margin-top: var(--spacing-2xl);
+		height: 380px;
+	}
+
+	.about-banner-img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center 40%;
+		display: block;
+	}
+
+	.about-banner-overlay {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.3) 70%, transparent 100%);
+		padding: var(--spacing-xl) var(--spacing-lg) var(--spacing-md);
+		color: #ffffff;
+	}
+
+	.overlay-tag {
+		font-size: var(--font-size-xs);
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: #34d399;
+	}
+
+	.overlay-caption {
+		font-size: var(--font-size-sm);
+		margin-top: 0.2rem;
+		opacity: 0.95;
+		color: #f3f4f6;
+	}
+
+	/* Board Clinic Feature */
+	.board-clinic-feature {
+		border-radius: var(--radius-lg);
+		overflow: hidden;
+		border: 1px solid var(--color-border);
+		background: var(--color-surface);
+		margin-bottom: var(--spacing-2xl);
+		box-shadow: var(--shadow-sm);
+	}
+
+	.board-clinic-img {
+		width: 100%;
+		height: 320px;
+		object-fit: cover;
+		display: block;
+	}
+
+	.board-clinic-caption {
+		padding: var(--spacing-md) var(--spacing-lg);
+		font-size: var(--font-size-xs);
+		color: var(--color-muted);
+		border-top: 1px solid var(--color-border);
+		background: var(--color-surface-alt);
+		line-height: var(--leading-normal);
+	}
+
+	.board-clinic-caption strong {
+		color: var(--color-text);
+	}
+</style>

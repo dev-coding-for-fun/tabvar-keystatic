@@ -1,35 +1,680 @@
 ---
+import "../styles/tokens.css";
+import "../styles/theme.css";
+
 interface Props {
-  title: string;
+	title?: string;
+	description?: string;
+	image?: string;
 }
 
-const { title } = Astro.props;
+const {
+	title = "TABVAR — The Association of Bow Valley Rockclimbers",
+	description = "TABVAR funds fixed hardware, anchors, and retrofitting across Bow Valley crags since 1994. 100% volunteer run.",
+	image = "/images/brand/climber-carabiner.jpg",
+} = Astro.props;
+
+const siteTitle = "TABVAR";
+const fullTitle = title.includes("TABVAR") ? title : `${title} — ${siteTitle}`;
+
+const month = new Date().getMonth();
+const isBulkOrderSeason = month === 11 || month === 0 || month === 1;
+const isClaimsSeason = month >= 4 && month <= 7;
 ---
 
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content="TABVAR - The Association of Bow Valley Rockclimbers" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-  </head>
-  <body>
-    <slot />
-  </body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/png" href="/images/brand/tabvar-seal.png" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{fullTitle}</title>
+		<meta name="description" content={description} />
+		<meta property="og:title" content={fullTitle} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={image} />
+		<meta property="og:type" content="website" />
+
+		<script is:inline>
+			(function () {
+				var theme = null;
+				var match = document.cookie.match(/theme=([^;]+)/);
+				if (match) {
+					theme = match[1];
+				} else {
+					try {
+						theme = localStorage.getItem("theme");
+					} catch (e) {}
+				}
+				if (theme === "dark" || theme === "light") {
+					document.documentElement.classList.add(theme);
+				}
+			})();
+		</script>
+	</head>
+	<body>
+		<header class="site-header">
+			<nav class="nav">
+				<a href="/" class="site-logo" aria-label="TABVAR Homepage">
+					<img
+						src="/images/brand/tabvar-logo.png"
+						alt="TABVAR Logo"
+						class="site-logo-img logo-light"
+					/>
+					<img
+						src="/images/brand/tabvar-logo-dark.png"
+						alt="TABVAR Logo"
+						class="site-logo-img logo-dark"
+					/>
+				</a>
+
+				<!-- Mobile menu toggle button -->
+				<button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation menu">
+					<svg class="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+						<line x1="3" y1="12" x2="21" y2="12"></line>
+						<line x1="3" y1="6" x2="21" y2="6"></line>
+						<line x1="3" y1="18" x2="21" y2="18"></line>
+					</svg>
+				</button>
+
+				<div class="nav-links" id="nav-menu">
+					<a href="https://app.tabvar.org/topos/" target="_blank" rel="noopener noreferrer" class="nav-link-item">
+						<span>Crag Topos</span>
+						<span class="nav-external-arrow">↗</span>
+					</a>
+
+					<!-- 5% Signal Rust Hazard Alert Beacon -->
+					<a href="https://app.tabvar.org/issues/create" target="_blank" rel="noopener noreferrer" class="nav-link-item nav-issue-pill">
+						<span class="pulse-dot"></span>
+						<span>Report an Issue</span>
+						<span class="nav-external-arrow">↗</span>
+					</a>
+
+					<a href="/developers" class="nav-link-item">
+						<span>Route Developers</span>
+						{isBulkOrderSeason && <span class="nav-seasonal-badge">Orders Open</span>}
+						{isClaimsSeason && <span class="nav-seasonal-badge">Claims Due</span>}
+					</a>
+
+					<a href="/about" class="nav-link-item">
+						<span>About</span>
+					</a>
+
+					<a href="/posts" class="nav-link-item">
+						<span>News</span>
+					</a>
+
+					<a href="/lookbook" class="nav-link-item lookbook-link">
+						<span>Lookbook</span>
+					</a>
+
+					<div class="nav-actions">
+						<a href="/keystatic" class="nav-admin" title="Keystatic Admin UI">CMS</a>
+						<a href="/donate" class="btn btn-primary nav-cta">Donate</a>
+					</div>
+				</div>
+			</nav>
+		</header>
+
+		<main>
+			<slot />
+		</main>
+
+		<footer class="site-footer">
+			<div class="footer-content">
+				<div class="footer-brand">
+					<div class="footer-badge-wrap">
+						<img src="/images/brand/tabvar-seal.png" alt="TABVAR Official Seal" class="footer-seal-img" />
+						<div class="footer-badge-text">
+							<span class="footer-badge-title">TABVAR</span>
+							<span class="footer-badge-subtitle">Fixed Hardware Association</span>
+						</div>
+					</div>
+					<p class="footer-tagline">
+						The Association of Bow Valley Area Rockclimbers. Securing lines, funding 316 stainless anchors, and stewarding Canadian Rockies climbing since 1994.
+					</p>
+				</div>
+
+				<div class="footer-links">
+					<div class="footer-col">
+						<h4>Climbers</h4>
+						<a href="https://app.tabvar.org/topos/" target="_blank" rel="noopener noreferrer">Crag Topos &amp; Beta ↗</a>
+						<a href="https://app.tabvar.org/issues/create" target="_blank" rel="noopener noreferrer">Report Hardware Issue ↗</a>
+						<a href="https://app.tabvar.org/goldencrowbar" target="_blank" rel="noopener noreferrer">Golden Crowbar Awards ↗</a>
+						<a href="/donate">Supporting Donor Program</a>
+						<a href="/lookbook">Brand Design Lookbook</a>
+					</div>
+
+					<div class="footer-col">
+						<h4>Route Developers</h4>
+						<a href="/developers">Developer Hub</a>
+						<a href="/developers#bulk-orders">Bulk Hardware Orders</a>
+						<a href="/developers#claims">Funding &amp; Claim Rules</a>
+						<a href="/developers#standards">316 SS &amp; Glue-In Standards</a>
+					</div>
+
+					<div class="footer-col">
+						<h4>About TABVAR</h4>
+						<a href="/about">Our Mandate &amp; Story</a>
+						<a href="/about#jon-jones">Jon Jones Memorial</a>
+						<a href="/about#board">Board of Directors</a>
+						<a href="/about#reports">Annual Reports Archive</a>
+						<a href="/contact">Contact Board</a>
+					</div>
+				</div>
+			</div>
+
+			<!-- Sponsor Strip -->
+			<div class="footer-sponsor-strip">
+				<div class="sponsor-strip-inner">
+					<span class="strip-label">Hardware Supported By:</span>
+					<div class="strip-logos">
+						<span class="strip-partner">Mountain Equipment Company</span>
+						<span class="strip-dot">&bull;</span>
+						<span class="strip-partner">Wim &amp; Nancy Pauw Foundation</span>
+						<span class="strip-dot">&bull;</span>
+						<span class="strip-partner">Alpine Club of Canada</span>
+						<span class="strip-dot">&bull;</span>
+						<span class="strip-partner">AustriAlpin</span>
+						<span class="strip-dot">&bull;</span>
+						<span class="strip-partner">Sika Canada</span>
+						<span class="strip-dot">&bull;</span>
+						<span class="strip-partner">Community Donors</span>
+					</div>
+				</div>
+			</div>
+
+			<!-- Footer Bottom Bar & Theme Switcher -->
+			<div class="footer-bottom">
+				<p>
+					&copy; {new Date().getFullYear()} TABVAR. 100% Volunteer Run Registered Non-Profit.
+				</p>
+
+				<div class="theme-switcher">
+					<button
+						type="button"
+						class="theme-btn"
+						data-theme="light"
+						aria-label="Yamnuska Day mode"
+					>
+						⛰️ Yamnuska
+					</button>
+					<button
+						type="button"
+						class="theme-btn"
+						data-theme="dark"
+						aria-label="Basalt Night mode"
+					>
+						🌙 Basalt
+					</button>
+					<button
+						type="button"
+						class="theme-btn"
+						data-theme="system"
+						aria-label="System theme"
+					>
+						System
+					</button>
+				</div>
+
+				<p class="footer-powered">
+					<a href="/keystatic">Keystatic Admin</a>
+				</p>
+			</div>
+		</footer>
+
+		<script>
+			// Mobile navigation toggle
+			const toggleBtn = document.getElementById("mobile-toggle");
+			const navMenu = document.getElementById("nav-menu");
+			if (toggleBtn && navMenu) {
+				toggleBtn.addEventListener("click", () => {
+					navMenu.classList.toggle("open");
+				});
+			}
+
+			// Theme Switcher Logic
+			const themeBtns = document.querySelectorAll(".theme-btn");
+			const root = document.documentElement;
+
+			function setTheme(theme: string) {
+				const secure = location.protocol === "https:" ? "; Secure" : "";
+				if (theme === "system") {
+					document.cookie = `theme=; path=/; max-age=0; SameSite=Lax${secure}`;
+					try { localStorage.removeItem("theme"); } catch (e) {}
+					root.classList.remove("light", "dark");
+				} else {
+					document.cookie = `theme=${theme}; path=/; max-age=31536000; SameSite=Lax${secure}`;
+					try { localStorage.setItem("theme", theme); } catch (e) {}
+					root.classList.remove("light", "dark");
+					root.classList.add(theme);
+				}
+				updateActiveBtn(theme);
+			}
+
+			function updateActiveBtn(theme: string) {
+				themeBtns.forEach((btn) => {
+					const b = btn as HTMLButtonElement;
+					b.classList.toggle("active", b.dataset.theme === theme);
+				});
+			}
+
+			function getStoredTheme(): string {
+				const match = document.cookie.match(/theme=([^;]+)/);
+				if (match) return match[1];
+				try {
+					const saved = localStorage.getItem("theme");
+					if (saved) return saved;
+				} catch (e) {}
+				return "system";
+			}
+
+			const storedTheme = getStoredTheme();
+			updateActiveBtn(storedTheme);
+
+			themeBtns.forEach((btn) => {
+				btn.addEventListener("click", () => {
+					const b = btn as HTMLButtonElement;
+					setTheme(b.dataset.theme || "system");
+				});
+			});
+		</script>
+	</body>
 </html>
 
 <style is:global>
-  :root {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  }
-  body {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem 1rem;
-    color: #222;
-    line-height: 1.6;
-  }
+	.site-header {
+		position: sticky;
+		top: 0;
+		z-index: 100;
+		background: color-mix(in srgb, var(--color-surface) 92%, transparent);
+		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
+		border-bottom: 1px solid var(--color-border);
+		transition: background var(--transition-base), border-color var(--transition-base);
+	}
+
+	.nav {
+		max-width: var(--wide-width);
+		margin: 0 auto;
+		padding: var(--spacing-md) var(--spacing-lg);
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: var(--spacing-lg);
+	}
+
+	.site-logo {
+		display: inline-flex;
+		align-items: center;
+		text-decoration: none;
+		transition: opacity var(--transition-fast);
+	}
+
+	.site-logo:hover {
+		opacity: 0.88;
+	}
+
+	.site-logo-img {
+		height: 42px;
+		width: auto;
+		max-width: 220px;
+		object-fit: contain;
+		display: block;
+	}
+
+	.logo-dark {
+		display: none;
+	}
+
+	.logo-light {
+		display: block;
+	}
+
+	:root.dark .logo-light {
+		display: none !important;
+	}
+
+	:root.dark .logo-dark {
+		display: block !important;
+	}
+
+	@media (prefers-color-scheme: dark) {
+		:root:not(.light) .logo-light {
+			display: none !important;
+		}
+		:root:not(.light) .logo-dark {
+			display: block !important;
+		}
+	}
+
+	.mobile-toggle {
+		display: none;
+		background: transparent;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-sm);
+		padding: 0.4rem;
+		cursor: pointer;
+		color: var(--color-text);
+	}
+
+	.menu-icon {
+		width: 1.5rem;
+		height: 1.5rem;
+	}
+
+	.nav-links {
+		display: flex;
+		align-items: center;
+		gap: var(--spacing-lg);
+		margin-left: auto;
+	}
+
+	.nav-link-item {
+		font-size: var(--font-size-sm);
+		font-weight: 500;
+		color: var(--color-muted);
+		transition: color var(--transition-fast);
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+		text-decoration: none;
+	}
+
+	.nav-link-item:hover {
+		color: var(--color-text);
+	}
+
+	.lookbook-link {
+		opacity: 0.85;
+	}
+
+	.nav-issue-pill {
+		background: var(--color-accent-soft);
+		color: var(--color-accent) !important;
+		border: 1px solid var(--color-accent-border);
+		padding: 0.25rem 0.75rem;
+		border-radius: var(--radius-full);
+		font-weight: 700;
+		box-shadow: var(--shadow-sm);
+	}
+
+	.nav-issue-pill:hover {
+		background: color-mix(in srgb, var(--color-accent) 26%, transparent);
+	}
+
+	.pulse-dot {
+		width: 7px;
+		height: 7px;
+		border-radius: 50%;
+		background-color: var(--color-accent);
+		animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+	}
+
+	@keyframes pulse {
+		0%, 100% { opacity: 1; transform: scale(1); }
+		50% { opacity: 0.4; transform: scale(0.85); }
+	}
+
+	.nav-external-arrow {
+		font-size: 0.8em;
+		opacity: 0.7;
+	}
+
+	.nav-seasonal-badge {
+		font-size: 0.65rem;
+		font-weight: 700;
+		background: var(--color-brand);
+		color: #ffffff;
+		padding: 0.1rem 0.45rem;
+		border-radius: var(--radius-full);
+	}
+
+	.nav-actions {
+		display: flex;
+		align-items: center;
+		gap: var(--spacing-md);
+	}
+
+	.nav-admin {
+		font-size: var(--font-size-xs);
+		color: var(--color-muted);
+		opacity: 0.6;
+		padding: 0.2rem 0.4rem;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-sm);
+	}
+
+	.nav-admin:hover {
+		opacity: 1;
+		color: var(--color-text);
+	}
+
+	.nav-cta {
+		padding: 0.4rem 1.1rem;
+		font-size: var(--font-size-sm);
+	}
+
+	main {
+		min-height: calc(100vh - 220px);
+	}
+
+	/* Footer */
+	.site-footer {
+		background: var(--color-surface);
+		border-top: 1px solid var(--color-border);
+		margin-top: var(--spacing-4xl);
+	}
+
+	.footer-content {
+		max-width: var(--wide-width);
+		margin: 0 auto;
+		padding: var(--spacing-4xl) var(--spacing-lg) var(--spacing-2xl);
+		display: grid;
+		grid-template-columns: 1.2fr 2fr;
+		gap: var(--spacing-4xl);
+	}
+
+	.footer-badge-wrap {
+		display: inline-flex;
+		align-items: center;
+		gap: var(--spacing-md);
+	}
+
+	.footer-seal-img {
+		height: 52px;
+		width: 52px;
+		object-fit: contain;
+		filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+	}
+
+	.footer-badge-text {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.footer-badge-title {
+		font-size: var(--font-size-xl);
+		font-weight: var(--font-weight-display);
+		color: var(--color-text);
+		line-height: 1.1;
+	}
+
+	.footer-badge-subtitle {
+		font-size: 0.72rem;
+		font-weight: 700;
+		color: var(--color-brand);
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+		margin-top: 0.2rem;
+	}
+
+	.footer-tagline {
+		margin-top: var(--spacing-md);
+		font-size: var(--font-size-sm);
+		color: var(--color-muted);
+		line-height: var(--leading-normal);
+		max-width: 24rem;
+	}
+
+	.footer-links {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: var(--spacing-xl);
+	}
+
+	.footer-col h4 {
+		font-size: var(--font-size-sm);
+		font-weight: 700;
+		color: var(--color-text);
+		margin-bottom: var(--spacing-md);
+		text-transform: uppercase;
+		letter-spacing: 0.04em;
+	}
+
+	.footer-col a {
+		display: block;
+		font-size: var(--font-size-sm);
+		color: var(--color-muted);
+		padding: var(--spacing-xs) 0;
+		transition: color var(--transition-fast);
+	}
+
+	.footer-col a:hover {
+		color: var(--color-text);
+	}
+
+	.footer-sponsor-strip {
+		border-top: 1px solid var(--color-border);
+		background: var(--color-bg);
+		padding: var(--spacing-md) var(--spacing-lg);
+	}
+
+	.sponsor-strip-inner {
+		max-width: var(--wide-width);
+		margin: 0 auto;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: var(--spacing-md);
+		flex-wrap: wrap;
+		font-size: var(--font-size-xs);
+		color: var(--color-muted);
+	}
+
+	.strip-label {
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		color: var(--color-text);
+	}
+
+	.strip-logos {
+		display: flex;
+		align-items: center;
+		gap: var(--spacing-sm);
+		flex-wrap: wrap;
+	}
+
+	.strip-partner {
+		font-weight: 500;
+	}
+
+	.strip-dot {
+		opacity: 0.4;
+	}
+
+	.footer-bottom {
+		max-width: var(--wide-width);
+		margin: 0 auto;
+		padding: var(--spacing-lg);
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: var(--spacing-md);
+		font-size: var(--font-size-xs);
+		color: var(--color-muted);
+		border-top: 1px solid var(--color-border-subtle);
+	}
+
+	.footer-powered a {
+		color: var(--color-brand);
+		font-weight: 600;
+	}
+
+	.theme-switcher {
+		display: flex;
+		gap: var(--spacing-xs);
+		background: var(--color-surface-alt);
+		padding: 3px;
+		border-radius: var(--radius-sm);
+		border: 1px solid var(--color-border);
+	}
+
+	.theme-btn {
+		background: transparent;
+		border: none;
+		padding: 0.25rem 0.6rem;
+		font-size: var(--font-size-xs);
+		font-weight: 600;
+		border-radius: 4px;
+		color: var(--color-muted);
+		cursor: pointer;
+		transition: all var(--transition-fast);
+	}
+
+	.theme-btn:hover {
+		color: var(--color-text);
+	}
+
+	.theme-btn.active {
+		background: var(--color-surface);
+		color: var(--color-text);
+		box-shadow: var(--shadow-sm);
+	}
+
+	/* Responsive */
+	@media (max-width: 860px) {
+		.mobile-toggle {
+			display: block;
+		}
+
+		.nav-links {
+			display: none;
+			position: absolute;
+			top: 100%;
+			left: 0;
+			right: 0;
+			background: var(--color-surface);
+			border-bottom: 1px solid var(--color-border);
+			flex-direction: column;
+			align-items: flex-start;
+			padding: var(--spacing-lg);
+			box-shadow: var(--shadow-lg);
+			gap: var(--spacing-md);
+		}
+
+		.nav-links.open {
+			display: flex;
+		}
+
+		.nav-actions {
+			width: 100%;
+			justify-content: space-between;
+			border-top: 1px solid var(--color-border-subtle);
+			padding-top: var(--spacing-md);
+		}
+
+		.footer-content {
+			grid-template-columns: 1fr;
+			gap: var(--spacing-2xl);
+		}
+
+		.footer-links {
+			grid-template-columns: 1fr;
+			gap: var(--spacing-xl);
+		}
+	}
 </style>

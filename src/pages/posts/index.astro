@@ -1,0 +1,136 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export const prerender = true;
+
+const posts = await getCollection('posts');
+---
+
+<Layout
+	title="News &amp; Route Bulletins — TABVAR"
+	description="Latest announcements, route reports, hardware notices, and community bulletins from TABVAR."
+>
+	<div class="posts-hero">
+		<div class="container">
+			<span class="badge-info">Community Bulletins</span>
+			<h1>News &amp; Announcements</h1>
+			<p class="hero-desc">
+				Official route stewardship updates, annual hardware reports, and community notices from the TABVAR volunteer board.
+			</p>
+		</div>
+	</div>
+
+	<div class="container posts-body">
+		{posts.length === 0 ? (
+			<div class="no-posts">
+				<p>No announcements published yet. Check back soon or visit the Keystatic Admin at <code>/keystatic</code> to create a post.</p>
+			</div>
+		) : (
+			<div class="posts-archive-grid">
+				{posts.map((post) => (
+					<a href={`/posts/${post.id}`} class="archive-card">
+						<span class="card-kicker">Bulletin</span>
+						<h2>{post.data.title}</h2>
+						<p class="card-desc">Click to read full bulletin details and guidelines.</p>
+						<span class="read-link">Read article &rarr;</span>
+					</a>
+				))}
+			</div>
+		)}
+	</div>
+</Layout>
+
+<style is:global>
+	.posts-hero {
+		background: var(--color-surface);
+		border-bottom: 1px solid var(--color-border);
+		padding: var(--spacing-4xl) var(--spacing-lg);
+	}
+
+	.posts-hero h1 {
+		font-size: var(--font-size-4xl);
+		font-weight: var(--font-weight-display);
+		letter-spacing: var(--tracking-tight);
+		color: var(--color-text);
+		margin: var(--spacing-sm) 0;
+	}
+
+	.hero-desc {
+		font-size: var(--font-size-lg);
+		color: var(--color-muted);
+		max-width: 48rem;
+		line-height: var(--leading-normal);
+	}
+
+	.posts-body {
+		padding: var(--spacing-4xl) var(--spacing-lg);
+	}
+
+	.posts-archive-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
+		gap: var(--spacing-xl);
+	}
+
+	.archive-card {
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		padding: var(--spacing-2xl);
+		display: flex;
+		flex-direction: column;
+		box-shadow: var(--shadow-sm);
+		transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+		text-decoration: none;
+	}
+
+	.archive-card:hover {
+		transform: translateY(-2px);
+		border-color: var(--color-brand);
+		box-shadow: var(--shadow);
+	}
+
+	.card-kicker {
+		font-size: var(--font-size-xs);
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: var(--color-brand);
+		margin-bottom: var(--spacing-xs);
+	}
+
+	.archive-card h2 {
+		font-size: var(--font-size-2xl);
+		font-weight: var(--font-weight-heading);
+		color: var(--color-text);
+		margin-bottom: var(--spacing-sm);
+	}
+
+	.card-desc {
+		font-size: var(--font-size-sm);
+		color: var(--color-muted);
+		line-height: var(--leading-normal);
+		margin-bottom: var(--spacing-xl);
+		flex-grow: 1;
+	}
+
+	.read-link {
+		font-size: var(--font-size-sm);
+		font-weight: 700;
+		color: var(--color-brand);
+	}
+
+	.no-posts {
+		text-align: center;
+		padding: var(--spacing-4xl);
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		color: var(--color-muted);
+	}
+
+	.no-posts code {
+		color: var(--color-brand);
+	}
+</style>

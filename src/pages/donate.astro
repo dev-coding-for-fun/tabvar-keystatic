@@ -1,0 +1,331 @@
+---
+import Layout from "../layouts/Layout.astro";
+import DonorTiers from "../components/DonorTiers.astro";
+
+export const prerender = true;
+---
+
+<Layout
+	title="Donate &amp; Supporting Donor Program"
+	description="Support fixed hardware replacement and new route development in the Bow Valley. Donate $100+ to unlock 15% discounts at local climbing retailers."
+>
+	<div class="donate-hero">
+		<div class="container">
+			<span class="badge-alert">Climb It Forward</span>
+			<h1>Support Bow Valley Climbing</h1>
+			<p class="hero-desc">
+				TABVAR is a 100% volunteer-run registered non-profit. Every dollar received (outside of basic insurance and bank fees) directly purchases 316 marine-grade stainless steel bolts, anchors, chains, and drill supplies for local crags.
+			</p>
+		</div>
+	</div>
+
+	<!-- Direct Impact Visual Showcase -->
+	<section class="impact-showcase-section">
+		<div class="container">
+			<div class="impact-grid">
+				<div class="impact-card corner-brackets">
+					<div class="impact-img-frame">
+						<img
+							src="/images/photos/Brian%20Spear%20drilling%20-%20Gift%20Card%20-%20Grotto%20Canyon.jpeg"
+							alt="Active route development and drilling in Grotto Canyon"
+							class="impact-img"
+							loading="lazy"
+						/>
+						<span class="impact-badge">Drills &amp; Hardware</span>
+					</div>
+					<div class="impact-body">
+						<h3>Subsidizing New Lines</h3>
+						<p>Your dollars purchase heavy-duty SDS drill bits, batteries, and 316 stainless steel expansion bolts for active route developers.</p>
+					</div>
+				</div>
+
+				<div class="impact-card corner-brackets">
+					<div class="impact-img-frame">
+						<img
+							src="/images/photos/Tobias%20Checking%20a%20glue-in%20%20IMG_6669.jpeg"
+							alt="Inspecting cured 316 stainless glue-in anchor"
+							class="impact-img"
+							loading="lazy"
+						/>
+						<span class="impact-badge">Anchor Safety</span>
+					</div>
+					<div class="impact-body">
+						<h3>50+ Year Anchor Lifespans</h3>
+						<p>Replacing aging, rusted plated hangers with permanent marine-grade glue-in anchors that withstand decades of freeze-thaw cycles.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Donor Tiers & Perks -->
+	<DonorTiers />
+
+	<!-- Detailed Retailer Perk Terms -->
+	<section class="perks-details-section">
+		<div class="container">
+			<div class="perks-card">
+				<div class="perks-header">
+					<span class="badge-info">Donor Instructions &amp; Conditions</span>
+					<h2>Retailer Discount Details</h2>
+					<p>The 15% discount for Super Supporters ($100+) is generously provided by our retail partners to reward community members who invest in crag safety.</p>
+				</div>
+
+				<div class="retail-rules-grid">
+					<div class="rule-item">
+						<h4>Mountain Equipment Company (MEC)</h4>
+						<p>Orders can be made once per month on regular-priced items. Email orders only (not available directly at retail checkout). Full instructions provided in your donation receipt.</p>
+					</div>
+					<div class="rule-item">
+						<h4>Vertical Addiction (Canmore)</h4>
+						<p>Limited to climbing gear (harnesses, ropes, helmets, pro, carabiners, quickdraws, belay devices) and footwear (climbing shoes, approach shoes, hiking boots). One purchase per month.</p>
+					</div>
+					<div class="rule-item">
+						<h4>Monod Sports (Banff)</h4>
+						<p>Valid for in-store purchases on eligible mountain equipment. Show your donor confirmation email at checkout.</p>
+					</div>
+					<div class="rule-item">
+						<h4>Canmore Climbing Gym</h4>
+						<p>Eligible for gear and gym entry discounts. Details sent upon donation.</p>
+					</div>
+					<div class="rule-item">
+						<h4>UnParallel Climbing Shoes</h4>
+						<p>15% discount code valid for online purchases through the UnParallel webstore.</p>
+					</div>
+					<div class="rule-item">
+						<h4>Annual Guidemap Early Access</h4>
+						<p>Released every October featuring all newly approved crags, retrofits, and topos before general public release.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Offline & Alternative Methods -->
+	<section id="offline" class="offline-section">
+		<div class="container">
+			<div class="offline-box">
+				<h3>Alternative Ways to Donate</h3>
+				<div class="offline-grid">
+					<div class="offline-method">
+						<h4>Interac e-Transfer</h4>
+						<p>Send e-transfers directly to:</p>
+						<p class="highlight-email"><code>donations@tabvar.org</code></p>
+						<p class="method-sub">Please include your full name, email, and mailing address in the memo if you want donor perk confirmation.</p>
+					</div>
+					<div class="offline-method">
+						<h4>Cheque or Money Order</h4>
+						<p>Please make cheques payable to <strong>TABVAR</strong> and mail to:</p>
+						<address>
+							TABVAR<br />
+							Box 8768 Stn Main<br />
+							Canmore, AB T1W 0C1
+						</address>
+					</div>
+					<div class="offline-method">
+						<h4>Corporate Sponsorship</h4>
+						<p>Interested in supporting TABVAR through your business, gym, or brand?</p>
+						<a href="/contact?subject=sponsorship" class="btn btn-primary" style="margin-top: 0.5rem;">
+							Contact Corporate Sponsorship
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</Layout>
+
+<style is:global>
+	.donate-hero {
+		background: var(--color-surface);
+		border-bottom: 1px solid var(--color-border);
+		padding: var(--spacing-4xl) var(--spacing-lg);
+	}
+
+	.donate-hero h1 {
+		font-size: var(--font-size-4xl);
+		font-weight: var(--font-weight-display);
+		letter-spacing: var(--tracking-tight);
+		color: var(--color-text);
+		margin: var(--spacing-sm) 0;
+	}
+
+	.hero-desc {
+		font-size: var(--font-size-lg);
+		color: var(--color-muted);
+		max-width: 48rem;
+		line-height: var(--leading-normal);
+	}
+
+	.perks-details-section {
+		padding: var(--spacing-2xl) var(--spacing-lg) var(--spacing-4xl);
+		background: var(--color-bg);
+	}
+
+	.perks-card {
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		padding: var(--spacing-3xl);
+		box-shadow: var(--shadow-sm);
+	}
+
+	.perks-header {
+		margin-bottom: var(--spacing-2xl);
+	}
+
+	.perks-header h2 {
+		font-size: var(--font-size-2xl);
+		font-weight: var(--font-weight-display);
+		color: var(--color-text);
+		margin: var(--spacing-xs) 0;
+	}
+
+	.perks-header p {
+		color: var(--color-muted);
+		font-size: var(--font-size-base);
+		max-width: 48rem;
+	}
+
+	.retail-rules-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+		gap: var(--spacing-xl);
+	}
+
+	.rule-item h4 {
+		font-size: var(--font-size-base);
+		font-weight: var(--font-weight-heading);
+		color: var(--color-text);
+		margin-bottom: var(--spacing-xs);
+	}
+
+	.rule-item p {
+		font-size: var(--font-size-sm);
+		color: var(--color-muted);
+		line-height: var(--leading-normal);
+		margin: 0;
+	}
+
+	.offline-section {
+		padding: var(--spacing-3xl) var(--spacing-lg) var(--spacing-5xl);
+		background: var(--color-surface);
+		border-top: 1px solid var(--color-border);
+	}
+
+	.offline-box h3 {
+		font-size: var(--font-size-2xl);
+		font-weight: var(--font-weight-display);
+		margin-bottom: var(--spacing-2xl);
+	}
+
+	.offline-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+		gap: var(--spacing-2xl);
+	}
+
+	.offline-method h4 {
+		font-size: var(--font-size-lg);
+		margin-bottom: var(--spacing-xs);
+	}
+
+	.offline-method p {
+		font-size: var(--font-size-sm);
+		color: var(--color-muted);
+		line-height: var(--leading-normal);
+		margin: 0 0 var(--spacing-xs) 0;
+	}
+
+	.highlight-email code {
+		font-size: var(--font-size-base);
+		color: var(--color-brand);
+		background: var(--color-brand-soft);
+		padding: 0.2rem 0.5rem;
+		border-radius: var(--radius-sm);
+		font-weight: 600;
+	}
+
+	.method-sub {
+		font-size: var(--font-size-xs) !important;
+		margin-top: var(--spacing-sm) !important;
+	}
+
+	address {
+		font-style: normal;
+		font-size: var(--font-size-sm);
+		color: var(--color-text);
+		line-height: var(--leading-relaxed);
+		background: var(--color-bg);
+		padding: var(--spacing-md);
+		border-radius: var(--radius);
+		border: 1px solid var(--color-border);
+		margin-top: var(--spacing-xs);
+	}
+
+	/* Impact Showcase */
+	.impact-showcase-section {
+		padding: var(--spacing-3xl) var(--spacing-lg) 0;
+		background: var(--color-bg);
+	}
+
+	.impact-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+		gap: var(--spacing-2xl);
+	}
+
+	.impact-card {
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		overflow: hidden;
+		box-shadow: var(--shadow-sm);
+	}
+
+	.impact-img-frame {
+		position: relative;
+		height: 240px;
+		background: #111;
+		overflow: hidden;
+	}
+
+	.impact-img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+	}
+
+	.impact-badge {
+		position: absolute;
+		bottom: var(--spacing-sm);
+		left: var(--spacing-sm);
+		font-size: 0.68rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		background: rgba(20, 24, 25, 0.85);
+		backdrop-filter: blur(4px);
+		color: #34d399;
+		padding: 0.25rem 0.6rem;
+		border-radius: var(--radius-sm);
+		border: 1px solid rgba(52, 211, 153, 0.3);
+	}
+
+	.impact-body {
+		padding: var(--spacing-xl);
+	}
+
+	.impact-body h3 {
+		font-size: var(--font-size-lg);
+		color: var(--color-text);
+		margin-bottom: var(--spacing-xs);
+	}
+
+	.impact-body p {
+		font-size: var(--font-size-sm);
+		color: var(--color-muted);
+		line-height: var(--leading-normal);
+	}
+</style>

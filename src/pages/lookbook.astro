@@ -1,0 +1,614 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+export const prerender = true;
+
+const colors = [
+	{ name: "Official Brand Green", hex: "#057c41", role: "Primary action, navbar highlights, safety checkmarks", darkHex: "#089650", tag: "Official Core" },
+	{ name: "Dark Pine Green", hex: "#03532a", role: "Hover & active state for green buttons", darkHex: "#057c41", tag: "State" },
+	{ name: "Soft Green Wash", hex: "#eaf3ed", role: "Light mode pill background & subtle container fills", darkHex: "rgba(5, 124, 65, 0.22)", tag: "Tint" },
+	{ name: "Carabiner Rust / Orange", hex: "#e6572a", role: "Hazard alerts, technical corner brackets, awards & pull quotes", darkHex: "#f06033", tag: "Signal Accent" },
+	{ name: "Deep Rust / Copper", hex: "#bf4118", role: "Hover state for hazard pills and high-vis actions", darkHex: "#d4481c", tag: "State" },
+	{ name: "Soft Rust Wash", hex: "#fcf1ed", role: "Hazard alert pill background & urgent callouts", darkHex: "rgba(240, 96, 51, 0.20)", tag: "Tint" },
+	{ name: "Yamnuska Warm Rock", hex: "#f5f2eb", role: "Official Day page background & warm rock canvas", darkHex: "#141819", tag: "Day Canvas" },
+	{ name: "Warm Surface Card", hex: "#fcfaf6", role: "Elevated card and surface background", darkHex: "#1e2426", tag: "Surface" },
+	{ name: "Basalt Slate", hex: "#141819", role: "Official Night background, high-contrast text in Day mode", darkHex: "#f4f6f5", tag: "Night Canvas" },
+	{ name: "Stainless Steel 316", hex: "#94a3b8", role: "Hardware specification badges & subtle stone borders", darkHex: "#64748b", tag: "Hardware" },
+];
+---
+
+<Layout
+	title="Brand Look Book & Design System"
+	description="Exploring the modernized TABVAR visual identity, anchored in official green (#057c41), warm Yamnuska rock neutrals, and carabiner signal rust (#e6572a)."
+>
+	<div class="lookbook-hero">
+		<div class="container">
+			<div class="hero-badge-strip">
+				<span class="badge-official">Official Green: #057c41</span>
+				<span class="badge-stone">Yamnuska Canvas: ~70%</span>
+				<span class="badge-stone">Brand Anchor: ~25%</span>
+				<span class="badge-accent-tag">Signal Accent: ~5%</span>
+			</div>
+			<h1>TABVAR Brand Look Book</h1>
+			<p class="hero-desc">
+				Honoring 30+ years of Bow Valley fixed hardware stewardship. Grounded in official forest green, warm Yamnuska rock neutrals, and an intentional signal accent used strictly when needed.
+			</p>
+		</div>
+	</div>
+
+	<div class="container lookbook-body">
+		<!-- Subnav Tabs -->
+		<div class="lookbook-tabs-nav">
+			<a href="#hierarchy" class="tab-link">1. Hierarchy &amp; 70/25/5 Rule</a>
+			<a href="#heritage" class="tab-link">2. Print Heritage Assets</a>
+			<a href="#palette" class="tab-link">3. Dual Rock Tokens</a>
+			<a href="#components" class="tab-link">4. Web Components</a>
+			<a href="#photography" class="tab-link">5. Photography Layout</a>
+		</div>
+
+		<!-- Section 1: Hierarchy Principle: 70 / 25 / 5 -->
+		<section id="hierarchy" class="lb-section">
+			<div class="section-title-wrap">
+				<span class="lb-eyebrow">Design Balance</span>
+				<h2>The 70 / 25 / 5 Visual Hierarchy</h2>
+				<p class="section-intro">
+					An accent color should never bounce back and forth 50/50 with the brand anchor. By anchoring the site in warm Yamnuska rock neutrals (and Basalt slate in dark mode), carrying institutional weight with Forest Green (#057c41), and reserving Carabiner Rust (#e6572a) strictly for critical signals (hazard reporting and discrete alerts), the site gains calm mountaineering authority.
+				</p>
+			</div>
+
+			<div class="hierarchy-bar-card">
+				<div class="hierarchy-bar">
+					<div class="bar-segment canvas">70% Yamnuska Rock Canvas &amp; Photography</div>
+					<div class="bar-segment brand">25% Forest Green Anchor</div>
+					<div class="bar-segment signal">5% Signal</div>
+				</div>
+				<div class="hierarchy-details">
+					<div class="detail-col">
+						<strong>70% Canadian Rockies Canvas</strong>
+						<p>Warm dolomitic rock tones (<code>#f5f2eb</code>, <code>#fcfaf6</code>) and weathered Basalt slate (<code>#141819</code>). Generous rock-toned whitespace ensures high legibility and lets mountain photography shine without UI clutter.</p>
+					</div>
+					<div class="detail-col">
+						<strong>25% Forest Green Anchor</strong>
+						<p>Official <code>#057c41</code> carries 95% of UI interactions: site logos, primary CTAs, active nav links, verified hardware checkmarks, and positive funding totals.</p>
+					</div>
+					<div class="detail-col">
+						<strong>5% Signal Rust (#e6572a)</strong>
+						<p>Reserved strictly for high-vis signals: the "Report an Issue" nav button, spinner bolt hazard pills, and discrete discount badges.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Section 2: Print Artifacts -->
+		<section id="heritage" class="lb-section">
+			<div class="section-title-wrap">
+				<span class="lb-eyebrow">Print Heritage</span>
+				<h2>Physical Collateral &amp; Brand DNA</h2>
+				<p class="section-intro">
+					Analyzing the core illustrations and publications provided by TABVAR to anchor the digital design language.
+				</p>
+			</div>
+
+			<div class="artifacts-grid">
+				<div class="artifact-card">
+					<div class="artifact-img-wrap">
+						<img src="/images/brand/tabvar-logo.png" alt="TABVAR Official Logo" class="artifact-img" />
+					</div>
+					<div class="artifact-meta">
+						<span class="artifact-tag green">Official Header Logo</span>
+						<h3>Carabiner Wordmark</h3>
+						<p>Official identity in charcoal and <strong>#057c41</strong> carabiner gates with full Association subtitle. Anchors the sticky top navigation.</p>
+					</div>
+				</div>
+
+				<div class="artifact-card">
+					<div class="artifact-img-wrap">
+						<img src="/images/brand/tabvar-seal.png" alt="TABVAR Seal" class="artifact-img" />
+					</div>
+					<div class="artifact-meta">
+						<span class="artifact-tag green">The Official Seal Badge</span>
+						<h3>Carabiner Lock &amp; Ring</h3>
+						<p>Carabiner body in gunmetal charcoal with knurled lock sleeve in <strong>#057c41</strong>. Serves as the official emblem badge in the site footer.</p>
+					</div>
+				</div>
+
+				<div class="artifact-card">
+					<div class="artifact-img-wrap">
+						<img src="/images/brand/supporting-donor-poster.jpg" alt="Supporting Donor Poster" class="artifact-img rounded" />
+					</div>
+					<div class="artifact-meta">
+						<span class="artifact-tag green">Donor Poster</span>
+						<h3>Halftone Screen Texture</h3>
+						<p>Vintage halftone dot-matrix wash paired with bold sans typography. Informs our subtle hero micro-textures.</p>
+					</div>
+				</div>
+
+				<div class="artifact-card">
+					<div class="artifact-img-wrap">
+						<img src="/images/brand/donor-rackcard.jpg" alt="Donor Rack Card" class="artifact-img rounded" />
+					</div>
+					<div class="artifact-meta">
+						<span class="artifact-tag rust">Rack Card</span>
+						<h3>Donor Tier Cards</h3>
+						<p>Warm rock photography and clean white tier cards ($40 / $100). Informs our Supporting Donor cards.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Section 3: Dual Rock Tokens -->
+		<section id="palette" class="lb-section">
+			<div class="section-title-wrap">
+				<span class="lb-eyebrow">Color Architecture</span>
+				<h2>Yamnuska Warm Rock &amp; Basalt Slate Swatches</h2>
+				<p class="section-intro">
+					Harmonious tokens tuned for alpine outdoor sunlight and crag headlight night reading.
+				</p>
+			</div>
+
+			<div class="swatches-grid">
+				{colors.map((c) => (
+					<div class="swatch-card">
+						<div class="swatch-color" style={`background-color: ${c.hex};`}></div>
+						<div class="swatch-info">
+							<div class="swatch-header">
+								<span class="swatch-name">{c.name}</span>
+								<span class="swatch-tag">{c.tag}</span>
+							</div>
+							<div class="swatch-codes">
+								<code>Day: {c.hex}</code>
+								<code>Night: {c.darkHex}</code>
+							</div>
+							<p class="swatch-role">{c.role}</p>
+						</div>
+					</div>
+				))}
+			</div>
+		</section>
+
+		<!-- Section 4: Web Components -->
+		<section id="components" class="lb-section">
+			<div class="section-title-wrap">
+				<span class="lb-eyebrow">Component Restraint</span>
+				<h2>Harmonized UI Elements</h2>
+				<p class="section-intro">
+					Buttons, pills, badges, and technical framing brackets that reflect rock hardware precision.
+				</p>
+			</div>
+
+			<div class="components-demo-grid">
+				<div class="demo-card">
+					<h4>Action Buttons</h4>
+					<div class="demo-flex">
+						<button class="btn btn-primary">Primary Action (#057c41)</button>
+						<button class="btn btn-secondary">Secondary Outline</button>
+						<button class="btn btn-accent">⚠️ Hazard Signal (#e6572a)</button>
+					</div>
+				</div>
+
+				<div class="demo-card">
+					<h4>Badges &amp; Status Pills</h4>
+					<div class="demo-flex">
+						<span class="badge-info">✓ Verified 316 Stainless</span>
+						<span class="badge-alert">⚠️ Report Spinner Bolt</span>
+						<span class="nav-seasonal-badge">Bulk Orders Open</span>
+					</div>
+				</div>
+
+				<div class="demo-card">
+					<h4>Technical Framing Brackets</h4>
+					<div class="corner-brackets demo-bracket-box">
+						<p>Corner brackets curve to match border radius, evoking mechanical climbing brackets.</p>
+					</div>
+				</div>
+
+				<div class="demo-card">
+					<h4>Subtle Halftone Texture</h4>
+					<div class="pattern-halftone demo-halftone-box">
+						<p>Halftone screen wash inspired by historic TABVAR posters.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Section 5: Mountain Photography Layout -->
+		<section id="photography" class="lb-section">
+			<div class="section-title-wrap">
+				<span class="lb-eyebrow">Photography Integration</span>
+				<h2>Warm Rock Canvas in Action</h2>
+				<p class="section-intro">
+					Authentic route developer photography holds center stage without competing with aggressive UI chrome.
+				</p>
+			</div>
+
+			<div class="photo-demo-card corner-brackets">
+				<img src="/images/photos/Tobias_drilling.jpg" alt="Route developer Tobias Link drilling on Bow Valley limestone" class="photo-demo-img" />
+				<div class="photo-demo-caption">
+					<strong>Canadian Rockies Fixed Hardware Stewardship</strong>
+					<span>Route developer Tobias Link drilling and equipping limestone sport pitches in the Bow Valley.</span>
+				</div>
+			</div>
+		</section>
+	</div>
+</Layout>
+
+<style is:global>
+	.lookbook-hero {
+		background: var(--color-surface);
+		border-bottom: 1px solid var(--color-border);
+		padding: var(--spacing-4xl) var(--spacing-lg);
+	}
+
+	.hero-badge-strip {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--spacing-xs);
+		margin-bottom: var(--spacing-md);
+	}
+
+	.badge-official {
+		font-size: var(--font-size-xs);
+		font-weight: 700;
+		background: var(--color-brand);
+		color: #ffffff;
+		padding: 0.2rem 0.6rem;
+		border-radius: var(--radius-sm);
+	}
+
+	.badge-stone {
+		font-size: var(--font-size-xs);
+		font-weight: 600;
+		background: var(--color-surface-alt);
+		color: var(--color-text);
+		border: 1px solid var(--color-border);
+		padding: 0.2rem 0.6rem;
+		border-radius: var(--radius-sm);
+	}
+
+	.badge-accent-tag {
+		font-size: var(--font-size-xs);
+		font-weight: 700;
+		background: var(--color-accent-soft);
+		color: var(--color-accent);
+		border: 1px solid var(--color-accent-border);
+		padding: 0.2rem 0.6rem;
+		border-radius: var(--radius-sm);
+	}
+
+	.lookbook-hero h1 {
+		font-size: var(--font-size-4xl);
+		font-weight: var(--font-weight-display);
+		letter-spacing: var(--tracking-tight);
+		color: var(--color-text);
+		margin-bottom: var(--spacing-sm);
+	}
+
+	.hero-desc {
+		font-size: var(--font-size-lg);
+		color: var(--color-muted);
+		max-width: 48rem;
+		line-height: var(--leading-normal);
+	}
+
+	.lookbook-body {
+		padding: var(--spacing-4xl) var(--spacing-lg);
+	}
+
+	.lookbook-tabs-nav {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--spacing-sm);
+		padding-bottom: var(--spacing-2xl);
+		border-bottom: 1px solid var(--color-border);
+		margin-bottom: var(--spacing-4xl);
+	}
+
+	.tab-link {
+		font-size: var(--font-size-xs);
+		font-weight: 700;
+		padding: 0.4rem 0.9rem;
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-full);
+		color: var(--color-text);
+		transition: all var(--transition-fast);
+	}
+
+	.tab-link:hover {
+		border-color: var(--color-brand);
+		color: var(--color-brand);
+	}
+
+	.lb-section {
+		margin-bottom: var(--spacing-5xl);
+	}
+
+	.section-title-wrap {
+		margin-bottom: var(--spacing-2xl);
+	}
+
+	.lb-eyebrow {
+		font-size: var(--font-size-xs);
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: var(--color-brand);
+		display: block;
+		margin-bottom: var(--spacing-xs);
+	}
+
+	.lb-section h2 {
+		font-size: var(--font-size-3xl);
+		font-weight: var(--font-weight-heading);
+		color: var(--color-text);
+		margin-bottom: var(--spacing-xs);
+	}
+
+	.section-intro {
+		font-size: var(--font-size-base);
+		color: var(--color-muted);
+		max-width: 48rem;
+		line-height: var(--leading-relaxed);
+	}
+
+	/* Hierarchy Bar */
+	.hierarchy-bar-card {
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		padding: var(--spacing-2xl);
+		box-shadow: var(--shadow);
+	}
+
+	.hierarchy-bar {
+		display: flex;
+		height: 44px;
+		border-radius: var(--radius);
+		overflow: hidden;
+		border: 1px solid var(--color-border);
+		margin-bottom: var(--spacing-2xl);
+	}
+
+	.bar-segment {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: var(--font-size-xs);
+		font-weight: 700;
+		text-align: center;
+		padding: 0 var(--spacing-sm);
+	}
+
+	.bar-segment.canvas {
+		width: 70%;
+		background: var(--color-surface-alt);
+		color: var(--color-text);
+	}
+
+	.bar-segment.brand {
+		width: 25%;
+		background: var(--color-brand);
+		color: #ffffff;
+	}
+
+	.bar-segment.signal {
+		width: 5%;
+		background: var(--color-accent);
+		color: #ffffff;
+		font-size: 0.65rem;
+	}
+
+	.hierarchy-details {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+		gap: var(--spacing-2xl);
+	}
+
+	.detail-col strong {
+		display: block;
+		font-size: var(--font-size-base);
+		color: var(--color-text);
+		margin-bottom: var(--spacing-xs);
+	}
+
+	.detail-col p {
+		font-size: var(--font-size-sm);
+		color: var(--color-muted);
+		line-height: var(--leading-normal);
+	}
+
+	/* Artifacts Grid */
+	.artifacts-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+		gap: var(--spacing-xl);
+	}
+
+	.artifact-card {
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		padding: var(--spacing-xl);
+		display: flex;
+		flex-direction: column;
+		box-shadow: var(--shadow-sm);
+	}
+
+	.artifact-img-wrap {
+		height: 180px;
+		background: var(--color-surface-alt);
+		border: 1px solid var(--color-border-subtle);
+		border-radius: var(--radius);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: var(--spacing-md);
+		margin-bottom: var(--spacing-lg);
+	}
+
+	.artifact-img {
+		max-height: 100%;
+		max-width: 100%;
+		object-fit: contain;
+	}
+
+	.artifact-tag {
+		font-size: var(--font-size-xs);
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		display: block;
+		margin-bottom: var(--spacing-xs);
+	}
+
+	.artifact-tag.green { color: var(--color-brand); }
+	.artifact-tag.rust { color: var(--color-accent); }
+
+	.artifact-meta h3 {
+		font-size: var(--font-size-lg);
+		margin-bottom: var(--spacing-xs);
+	}
+
+	.artifact-meta p {
+		font-size: var(--font-size-sm);
+		color: var(--color-muted);
+		line-height: var(--leading-normal);
+	}
+
+	/* Swatches Grid */
+	.swatches-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+		gap: var(--spacing-lg);
+	}
+
+	.swatch-card {
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius);
+		overflow: hidden;
+		box-shadow: var(--shadow-sm);
+	}
+
+	.swatch-color {
+		height: 70px;
+		width: 100%;
+		border-bottom: 1px solid var(--color-border-subtle);
+	}
+
+	.swatch-info {
+		padding: var(--spacing-md);
+	}
+
+	.swatch-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 0.25rem;
+	}
+
+	.swatch-name {
+		font-weight: 700;
+		font-size: var(--font-size-sm);
+		color: var(--color-text);
+	}
+
+	.swatch-tag {
+		font-size: 0.65rem;
+		font-weight: 700;
+		color: var(--color-muted);
+	}
+
+	.swatch-codes {
+		display: flex;
+		flex-direction: column;
+		gap: 0.15rem;
+		margin: var(--spacing-xs) 0;
+	}
+
+	.swatch-codes code {
+		font-size: 0.72rem;
+		color: var(--color-muted);
+	}
+
+	.swatch-role {
+		font-size: var(--font-size-xs);
+		color: var(--color-muted);
+		line-height: 1.35;
+	}
+
+	/* Components Demo */
+	.components-demo-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+		gap: var(--spacing-xl);
+	}
+
+	.demo-card {
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius);
+		padding: var(--spacing-xl);
+	}
+
+	.demo-card h4 {
+		font-size: var(--font-size-base);
+		margin-bottom: var(--spacing-md);
+		color: var(--color-text);
+	}
+
+	.demo-flex {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--spacing-sm);
+		align-items: center;
+	}
+
+	.demo-bracket-box {
+		padding: var(--spacing-xl);
+		background: var(--color-surface-alt);
+		border-radius: var(--radius);
+		font-size: var(--font-size-sm);
+		color: var(--color-text);
+	}
+
+	.demo-halftone-box {
+		padding: var(--spacing-xl);
+		background-color: var(--color-surface-alt);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius);
+		font-size: var(--font-size-sm);
+		color: var(--color-text);
+	}
+
+	/* Photo demo */
+	.photo-demo-card {
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		overflow: hidden;
+		box-shadow: var(--shadow);
+	}
+
+	.photo-demo-img {
+		width: 100%;
+		height: 380px;
+		object-fit: cover;
+	}
+
+	.photo-demo-caption {
+		padding: var(--spacing-md) var(--spacing-lg);
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: var(--spacing-sm);
+		font-size: var(--font-size-xs);
+		color: var(--color-muted);
+		background: var(--color-surface);
+	}
+
+	.photo-demo-caption strong {
+		color: var(--color-text);
+	}
+</style>

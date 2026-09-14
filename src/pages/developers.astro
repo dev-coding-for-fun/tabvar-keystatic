@@ -1,0 +1,708 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+export const prerender = true;
+
+const month = new Date().getMonth(); // 0 = Jan, 11 = Dec
+const isBulkOrderSeason = month === 11 || month === 0 || month === 1;
+const isClaimsSeason = month >= 4 && month <= 7;
+---
+
+<Layout
+	title="Route Developers &amp; Retrofitters Hub"
+	description="Funding guidelines, claim submissions, bulk hardware orders, and 316 stainless steel installation standards for Bow Valley route developers."
+>
+	<div class="developers-hero">
+		<div class="container">
+			<span class="badge-alert">Bow Valley Routebuilder Portal</span>
+			<h1>Route Developers &amp; Retrofitters Hub</h1>
+			<p class="hero-desc">
+				TABVAR has supported Bow Valley route developers and retrofitters since 1994. Here you will find our funding caps, claim spreadsheets, bulk hardware order schedules, and 316 stainless steel standards.
+			</p>
+			
+			<div class="quick-jump-bar">
+				<a href="#claims" class="jump-pill">Funding Guidelines &amp; Claims</a>
+				<a href="#bulk-orders" class="jump-pill">Bulk Hardware Orders</a>
+				<a href="#standards" class="jump-pill">316 SS &amp; Glue-In Standards</a>
+			</div>
+		</div>
+	</div>
+
+	<!-- Seasonal Alert Banner -->
+	<section class="seasonal-banner-section">
+		<div class="container">
+			{isBulkOrderSeason ? (
+				<div class="seasonal-alert bulk-open">
+					<div class="alert-icon">📦</div>
+					<div class="alert-content">
+						<h3>Hardware Bulk Order Window Active</h3>
+						<p>Bulk hardware orders are processed annually in winter. Deadline for orders is <strong>16:00 MST on Tuesday, January 20</strong>. Delivery arrives for spring cragging.</p>
+					</div>
+					<a href="#bulk-orders" class="btn btn-primary">Go to Bulk Orders</a>
+				</div>
+			) : isClaimsSeason ? (
+				<div class="seasonal-alert claims-open">
+					<div class="alert-icon">⏱️</div>
+					<div class="alert-content">
+						<h3>Route &amp; Retrofit Claims Season</h3>
+						<p>New route and retrofit reimbursement claims for this season are due by <strong>August 1</strong>. Ensure your claim includes topos and approach beta.</p>
+					</div>
+					<a href="#claims" class="btn btn-accent">Submit a Claim</a>
+				</div>
+			) : (
+				<div class="seasonal-alert info-state">
+					<div class="alert-icon">🧗</div>
+					<div class="alert-content">
+						<h3>Active Route Development Season</h3>
+						<p>Developing a new sector or retrofitting classic lines? Review funding limits and hardware specs below before drilling.</p>
+					</div>
+					<a href="#claims" class="btn btn-secondary">Review Guidelines</a>
+				</div>
+			)}
+		</div>
+	</section>
+
+	<!-- Main Content Sections -->
+	<div class="container dev-content">
+		<!-- SECTION 1: CLAIMS & FUNDING -->
+		<section id="claims" class="dev-section">
+			<div class="section-kicker">Funding &amp; Claims</div>
+			<h2>Route &amp; Retrofit Funding Guidelines</h2>
+			<p class="section-lead">
+				In response to our community's generous support, TABVAR distributes funds under clear annual caps to ensure fair support for all active developers.
+			</p>
+
+			<div class="funding-caps-grid">
+				<div class="cap-card">
+					<div class="cap-amount">$1,500</div>
+					<div class="cap-type">Expansion Bolts</div>
+					<p class="cap-desc">Annual funding cap for new routes developed using 316 stainless steel mechanical expansion bolts.</p>
+				</div>
+				<div class="cap-card cap-highlight">
+					<div class="cap-amount">$2,250</div>
+					<div class="cap-type">Glue-In Anchors &amp; Bolts</div>
+					<p class="cap-desc">Higher subsidy cap to encourage long-lasting glue-in bolts and structural epoxy installations.</p>
+				</div>
+				<div class="cap-card">
+					<div class="cap-amount">No Limit</div>
+					<div class="cap-type">Retrofits &amp; Anchor Upgrades</div>
+					<p class="cap-desc">No annual dollar limit on legitimate retrofits replacing aging, dangerous, or plated hardware on established routes.</p>
+				</div>
+			</div>
+
+			<!-- Route Developer Action Card -->
+			<div class="dev-action-card corner-brackets">
+				<div class="dev-card-img-col">
+					<img
+						src="/images/photos/Tobias_drilling.jpg"
+						alt="Routebuilder drilling bolt hole on Bow Valley rock"
+						class="dev-action-img"
+						loading="lazy"
+					/>
+				</div>
+				<div class="dev-card-text-col">
+					<span class="badge-tag">Community Routebuilders</span>
+					<h3>Equipping Bow Valley Lines Since 1994</h3>
+					<p>
+						Active route developers volunteer hundreds of hours cleaning loose limestone, establishing classic lines, and installing certified hardware. TABVAR covers 100% of qualified hardware costs so climbers can enjoy safe, enduring routes.
+					</p>
+					<div class="dev-card-perks">
+						<span class="perk-chip">🔩 100% 316 Stainless Subsidies</span>
+						<span class="perk-chip">🧪 Full Resin &amp; Glue-In Support</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="steps-card">
+				<h3>How to Submit a Claim</h3>
+				<p class="steps-deadline">Submission Deadline: <strong>August 1</strong> (Annual)</p>
+				<ol class="submission-steps">
+					<li>
+						<strong>Read the Guidelines:</strong> Ensure your hardware meets the 100% 316 stainless steel requirement.
+					</li>
+					<li>
+						<strong>Copy the Spreadsheet:</strong> Make a copy of the official <a href="https://tabvar.org/routebuilders/submission-and-funding" target="_blank" rel="noopener noreferrer">New Route Claim Form</a> or <a href="https://tabvar.org/routebuilders/submission-and-funding" target="_blank" rel="noopener noreferrer">Retrofit Claim Form</a> in Google Sheets.
+					</li>
+					<li>
+						<strong>Name Your File:</strong> Include your full name in the spreadsheet file title.
+					</li>
+					<li>
+						<strong>Attach Topos &amp; Approach Info:</strong> For all new routes, put together a detailed route description and topo with approach directions. This is mandatory for claim processing.
+					</li>
+					<li>
+						<strong>Submit via Email:</strong> Email your completed spreadsheet and topo to <a href="mailto:claims@tabvar.org">claims@tabvar.org</a>. Confirmations are typically sent within two weeks.
+					</li>
+				</ol>
+			</div>
+		</section>
+
+		<!-- SECTION 2: BULK HARDWARE ORDERS -->
+		<section id="bulk-orders" class="dev-section">
+			<div class="section-kicker">Annual Bulk Purchasing</div>
+			<h2>Bulk Hardware Orders</h2>
+			<p class="section-lead">
+				TABVAR consolidates orders annually with major industrial and climbing manufacturers to secure substantial wholesale discounts for local route builders.
+			</p>
+
+			<div class="order-protocol-box">
+				<div class="protocol-timeline">
+					<div class="timeline-step">
+						<span class="step-num">1</span>
+						<strong>Order Form</strong>
+						<span>Download the consolidated hardware order sheet</span>
+					</div>
+					<div class="timeline-step">
+						<span class="step-num">2</span>
+						<strong>Submit &amp; E-Transfer</strong>
+						<span>Send payment to <code>accounting@tabvar.org</code> by Jan 20 (16:00 MST)</span>
+					</div>
+					<div class="timeline-step">
+						<span class="step-num">3</span>
+						<strong>Delivery Pickup</strong>
+						<span>Pickup in Canmore or Calgary (Chains/hangers in March, rest by May)</span>
+					</div>
+				</div>
+
+				<div class="order-highlights">
+					<h4>Key Bulk Order Details</h4>
+					<ul>
+						<li><strong>100% 316 Marine-Grade SS:</strong> Everything supplied in bulk orders is Grade 316 stainless steel.</li>
+						<li><strong>Chain Cutting Math:</strong> Bulk 316 chain runs ~9 links per foot at $1/link. For every cut section, add $1 for the cut link (e.g. three 5-link sections = 3 × ($5 + $1) = $18).</li>
+						<li><strong>Glue-In Retrobolting Credits:</strong> Route builders who used TABVAR-supplied glue-ins for retro-bolting in the past year receive a 25% material credit notice redeemable on the bulk order.</li>
+						<li><strong>Pick-up Locations:</strong> Please specify either Canmore or Calgary pickup on your order form.</li>
+					</ul>
+				</div>
+
+				<div class="bulk-order-visual corner-brackets">
+					<img
+						src="/images/photos/Ian%20Hammering%20a%20wave%20bolt%20at%20Cowbell.JPG"
+						alt="Ian hammering a wave bolt into limestone at Cowbell"
+						class="bulk-visual-img"
+						loading="lazy"
+					/>
+					<div class="bulk-visual-content">
+						<h4>Wholesale Consolidation for Maximum Value</h4>
+						<p>
+							TABVAR pools community orders directly with certified manufacturers, ensuring local route builders get top-tier 316 marine-grade hardware at unbeatable bulk rates before spring cragging begins.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- SECTION 3: 316 SS & GLUE-IN STANDARDS -->
+		<section id="standards" class="dev-section">
+			<div class="section-kicker">Hardware Quality Requirements</div>
+			<h2>316 Stainless Steel &amp; Installation Standards</h2>
+			<p class="section-lead">
+				Plated carbon steel bolts fail quickly and pose severe corrosion hazards in alpine limestone. TABVAR exclusively funds Grade 316 stainless steel.
+			</p>
+
+			<div class="standards-grid">
+				<div class="standard-card">
+					<h4>1. Mechanical Expansion Bolts</h4>
+					<p>Must be Grade 316 (A4) stainless steel wedge anchors or 5-piece sleeve bolts. Minimum diameter 3/8" (10mm) for solid limestone; 1/2" (12mm) recommended for soft or fractured rock.</p>
+				</div>
+				<div class="standard-card">
+					<h4>2. AustriAlpin Glue-In Anchors</h4>
+					<p>AustriAlpin 316 stainless glue-in bolts paired with certified structural epoxy (such as Sika AnchorFix or Hilti HIT-RE). Holes must be meticulously brushed and blown clean with compressed air.</p>
+				</div>
+				<div class="standard-card">
+					<h4>3. Never Mix Metals</h4>
+					<p>Never pair a plated carbon steel washer, bolt, or link with a stainless steel hanger. Galvanic corrosion will rapidly compromise the anchor.</p>
+				</div>
+				<div class="standard-card">
+					<h4>4. Top Anchors &amp; Lower-Offs</h4>
+					<p>All top anchors must feature dual independent 316 stainless anchor points with certified stainless chains and ring or captive carabiner lower-offs to preserve rock and prevent rope wear.</p>
+				</div>
+			</div>
+
+			<!-- Hands-on Anchor Installation Visual Protocols -->
+			<div class="standards-visual-grid">
+				<div class="standard-visual-card corner-brackets">
+					<div class="standard-img-wrap">
+						<img
+							src="/images/photos/Tobias%20demonstrating%20glue-ins%20%20IMG_6665.jpg"
+							alt="Tobias Link demonstrating structural epoxy resin extrusion"
+							class="standard-img"
+							loading="lazy"
+						/>
+						<span class="step-badge">Step 1: Resin Injection</span>
+					</div>
+					<div class="standard-body">
+						<h5>Epoxy Injection &amp; Nozzle Mixing</h5>
+						<p>Injecting certified high-strength structural adhesive from the back of the thoroughly brushed and blown hole, eliminating air voids and ensuring proper resin mixing.</p>
+					</div>
+				</div>
+
+				<div class="standard-visual-card corner-brackets">
+					<div class="standard-img-wrap">
+						<img
+							src="/images/photos/Tobias%20Checking%20a%20glue-in%20%20IMG_6669.jpeg"
+							alt="Inspecting cured 316 stainless glue-in anchor"
+							class="standard-img"
+							loading="lazy"
+						/>
+						<span class="step-badge">Step 2: Curing &amp; Inspection</span>
+					</div>
+					<div class="standard-body">
+						<h5>Bolt Seating &amp; Collar Seal Inspection</h5>
+						<p>Ensuring the bolt is properly seated, collar is fully sealed against moisture intrusion, and adhesive is 100% cured prior to first load.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+</Layout>
+
+<style is:global>
+	.developers-hero {
+		background: var(--color-surface);
+		border-bottom: 1px solid var(--color-border);
+		padding: var(--spacing-4xl) var(--spacing-lg);
+	}
+
+	.developers-hero h1 {
+		font-size: var(--font-size-4xl);
+		font-weight: var(--font-weight-display);
+		letter-spacing: var(--tracking-tight);
+		color: var(--color-text);
+		margin: var(--spacing-sm) 0;
+	}
+
+	.hero-desc {
+		font-size: var(--font-size-lg);
+		color: var(--color-muted);
+		max-width: 48rem;
+		line-height: var(--leading-normal);
+		margin-bottom: var(--spacing-xl);
+	}
+
+	.quick-jump-bar {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--spacing-sm);
+	}
+
+	.jump-pill {
+		font-size: var(--font-size-xs);
+		font-weight: 600;
+		background: var(--color-surface-alt);
+		border: 1px solid var(--color-border);
+		padding: 0.35rem 0.85rem;
+		border-radius: var(--radius-full);
+		color: var(--color-text);
+		transition: all var(--transition-fast);
+	}
+
+	.jump-pill:hover {
+		border-color: var(--color-brand);
+		color: var(--color-brand);
+	}
+
+	/* Seasonal Alert Banner */
+	.seasonal-banner-section {
+		padding: var(--spacing-lg) 0;
+		background-color: var(--color-bg);
+	}
+
+	.seasonal-alert {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		gap: var(--spacing-lg);
+		padding: var(--spacing-lg) var(--spacing-xl);
+		border-radius: var(--radius-lg);
+		border: 1px solid var(--color-border);
+	}
+
+	.bulk-open {
+		background: var(--color-brand-soft);
+		border-color: var(--color-brand-border);
+	}
+
+	.claims-open {
+		background: var(--color-accent-soft);
+		border-color: var(--color-accent-border);
+	}
+
+	.info-state {
+		background: var(--color-surface);
+	}
+
+	.alert-icon {
+		font-size: 2rem;
+	}
+
+	.alert-content {
+		flex: 1;
+		min-width: 16rem;
+	}
+
+	.alert-content h3 {
+		font-size: var(--font-size-lg);
+		margin-bottom: 0.2rem;
+	}
+
+	.alert-content p {
+		font-size: var(--font-size-sm);
+		color: var(--color-muted);
+	}
+
+	/* Content Sections */
+	.dev-content {
+		padding: var(--spacing-4xl) var(--spacing-lg);
+	}
+
+	.dev-section {
+		margin-bottom: var(--spacing-5xl);
+	}
+
+	.dev-section h2 {
+		font-size: var(--font-size-3xl);
+		font-weight: var(--font-weight-heading);
+		color: var(--color-text);
+		margin-bottom: var(--spacing-xs);
+	}
+
+	.section-lead {
+		font-size: var(--font-size-base);
+		color: var(--color-muted);
+		max-width: 46rem;
+		line-height: var(--leading-normal);
+		margin-bottom: var(--spacing-2xl);
+	}
+
+	/* Funding Caps Grid */
+	.funding-caps-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+		gap: var(--spacing-xl);
+		margin-bottom: var(--spacing-2xl);
+	}
+
+	.cap-card {
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		padding: var(--spacing-2xl);
+		display: flex;
+		flex-direction: column;
+		box-shadow: var(--shadow-sm);
+	}
+
+	.cap-highlight {
+		border-color: var(--color-brand);
+		border-width: 2px;
+	}
+
+	.cap-amount {
+		font-size: var(--font-size-4xl);
+		font-weight: var(--font-weight-display);
+		color: var(--color-brand);
+		line-height: 1;
+		margin-bottom: var(--spacing-xs);
+	}
+
+	.cap-type {
+		font-size: var(--font-size-base);
+		font-weight: 700;
+		color: var(--color-text);
+		margin-bottom: var(--spacing-sm);
+	}
+
+	.cap-desc {
+		font-size: var(--font-size-sm);
+		color: var(--color-muted);
+		line-height: var(--leading-normal);
+	}
+
+	/* Steps Card */
+	.steps-card {
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		padding: var(--spacing-2xl);
+	}
+
+	.steps-card h3 {
+		font-size: var(--font-size-xl);
+		margin-bottom: var(--spacing-xs);
+	}
+
+	.steps-deadline {
+		font-size: var(--font-size-sm);
+		color: var(--color-accent);
+		font-weight: 600;
+		margin-bottom: var(--spacing-lg);
+	}
+
+	.submission-steps {
+		padding-left: var(--spacing-lg);
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-md);
+		font-size: var(--font-size-sm);
+		color: var(--color-text);
+		line-height: var(--leading-normal);
+	}
+
+	/* Order Protocol Box */
+	.order-protocol-box {
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		padding: var(--spacing-2xl);
+	}
+
+	.protocol-timeline {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+		gap: var(--spacing-xl);
+		margin-bottom: var(--spacing-2xl);
+		padding-bottom: var(--spacing-2xl);
+		border-bottom: 1px solid var(--color-border-subtle);
+	}
+
+	.timeline-step {
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-xs);
+		font-size: var(--font-size-sm);
+	}
+
+	.step-num {
+		width: 28px;
+		height: 28px;
+		background: var(--color-brand);
+		color: #ffffff;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-weight: 700;
+		font-size: var(--font-size-xs);
+	}
+
+	.timeline-step span {
+		color: var(--color-muted);
+	}
+
+	.order-highlights h4 {
+		font-size: var(--font-size-base);
+		margin-bottom: var(--spacing-sm);
+	}
+
+	.order-highlights ul {
+		padding-left: var(--spacing-lg);
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-xs);
+		font-size: var(--font-size-sm);
+		color: var(--color-muted);
+		line-height: var(--leading-normal);
+	}
+
+	/* Standards Grid */
+	.standards-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+		gap: var(--spacing-lg);
+	}
+
+	.standard-card {
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius);
+		padding: var(--spacing-xl);
+	}
+
+	.standard-card h4 {
+		font-size: var(--font-size-base);
+		margin-bottom: var(--spacing-xs);
+		color: var(--color-text);
+	}
+
+	.standard-card p {
+		font-size: var(--font-size-sm);
+		color: var(--color-muted);
+		line-height: var(--leading-normal);
+	}
+
+	/* Developer Action Card */
+	.dev-action-card {
+		display: grid;
+		grid-template-columns: 280px 1fr;
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		overflow: hidden;
+		margin-bottom: var(--spacing-3xl);
+		box-shadow: var(--shadow-sm);
+	}
+
+	.dev-card-img-col {
+		position: relative;
+		min-height: 240px;
+		background: #111;
+	}
+
+	.dev-action-img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+	}
+
+	.dev-card-text-col {
+		padding: var(--spacing-2xl);
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	.badge-tag {
+		font-size: var(--font-size-xs);
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: var(--color-brand);
+		margin-bottom: var(--spacing-xs);
+	}
+
+	.dev-card-text-col h3 {
+		font-size: var(--font-size-xl);
+		color: var(--color-text);
+		margin-bottom: var(--spacing-xs);
+	}
+
+	.dev-card-text-col p {
+		font-size: var(--font-size-sm);
+		color: var(--color-muted);
+		line-height: var(--leading-normal);
+		margin-bottom: var(--spacing-md);
+	}
+
+	.dev-card-perks {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--spacing-sm);
+	}
+
+	.perk-chip {
+		font-size: var(--font-size-xs);
+		font-weight: 600;
+		padding: 0.25rem 0.65rem;
+		background: var(--color-surface-alt);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-full);
+		color: var(--color-text);
+	}
+
+	/* Bulk Order Visual Strip */
+	.bulk-order-visual {
+		display: flex;
+		align-items: center;
+		gap: var(--spacing-xl);
+		background: var(--color-surface-alt);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius);
+		padding: var(--spacing-lg);
+		margin-top: var(--spacing-2xl);
+	}
+
+	.bulk-visual-img {
+		width: 110px;
+		height: 110px;
+		border-radius: var(--radius);
+		object-fit: cover;
+		flex-shrink: 0;
+	}
+
+	.bulk-visual-content h4 {
+		font-size: var(--font-size-base);
+		color: var(--color-text);
+		margin-bottom: var(--spacing-xs);
+	}
+
+	.bulk-visual-content p {
+		font-size: var(--font-size-xs);
+		color: var(--color-muted);
+		line-height: var(--leading-normal);
+	}
+
+	/* Standards Visual Grid */
+	.standards-visual-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+		gap: var(--spacing-xl);
+		margin-top: var(--spacing-3xl);
+	}
+
+	.standard-visual-card {
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		overflow: hidden;
+		box-shadow: var(--shadow-sm);
+	}
+
+	.standard-img-wrap {
+		position: relative;
+		width: 100%;
+		height: 220px;
+		background: #111;
+		overflow: hidden;
+	}
+
+	.standard-img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+	}
+
+	.step-badge {
+		position: absolute;
+		top: var(--spacing-sm);
+		left: var(--spacing-sm);
+		font-size: 0.68rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		background: var(--color-brand);
+		color: #ffffff;
+		padding: 0.25rem 0.6rem;
+		border-radius: var(--radius-sm);
+		box-shadow: var(--shadow-sm);
+	}
+
+	.standard-body {
+		padding: var(--spacing-lg);
+	}
+
+	.standard-body h5 {
+		font-size: var(--font-size-base);
+		font-weight: var(--font-weight-heading);
+		color: var(--color-text);
+		margin-bottom: var(--spacing-xs);
+	}
+
+	.standard-body p {
+		font-size: var(--font-size-xs);
+		color: var(--color-muted);
+		line-height: var(--leading-normal);
+	}
+
+	@media (max-width: 768px) {
+		.dev-action-card {
+			grid-template-columns: 1fr;
+		}
+
+		.bulk-order-visual {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+	}
+</style>

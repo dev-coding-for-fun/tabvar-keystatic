@@ -1,0 +1,291 @@
+---
+interface Props {
+	stripeUrlSupporter?: string;
+	stripeUrlSuper?: string;
+}
+
+const {
+	stripeUrlSupporter = "https://donate.stripe.com/tabvar_supporter_40",
+	stripeUrlSuper = "https://donate.stripe.com/tabvar_super_supporter_100",
+} = Astro.props;
+
+const tiers = [
+	{
+		name: "TABVAR Supporter",
+		amount: "$40",
+		cadence: "per year",
+		description: "Directly funds the replacement of aging anchors and new route development across the Bow Valley.",
+		highlighted: false,
+		badge: "Annual Giving",
+		ctaLabel: "Select $40 Supporter",
+		ctaUrl: stripeUrlSupporter,
+		features: [
+			"Directly funds 4 stainless steel expansion bolts & hangers",
+			"Early Access to newly approved Bow Valley route maps",
+			"1× Entry into the Annual Climbing Swag Raffle ($1,500+ prizes)",
+			"Official TABVAR Supporter recognition & digital badge",
+		],
+	},
+	{
+		name: "Super Supporter",
+		amount: "$100",
+		cadence: "per year",
+		description: "Our highest-impact community tier, unlocking exclusive retailer discounts that pay for themselves.",
+		highlighted: true,
+		badge: "★ Most Popular Community Tier",
+		ctaLabel: "Join Super Supporter — $100",
+		ctaUrl: stripeUrlSuper,
+		features: [
+			"All Supporter perks & Guidemap early access included",
+			"15% OFF at Mountain Equipment Company (MEC)",
+			"15% OFF at Monod Sports (Banff)",
+			"15% OFF at Vertical Addiction (Canmore)",
+			"15% OFF at Canmore Climbing Gym",
+			"15% OFF online code for UnParallel Climbing Shoes",
+			"5× Entries in the Annual October Prize Raffle",
+		],
+	},
+];
+---
+
+<section class="donor-tiers-section" id="donor-program">
+	<div class="donor-tiers-container">
+		<div class="section-header">
+			<span class="section-kicker">Climb It Forward</span>
+			<h2 class="section-headline">The TABVAR Supporting Donor Program</h2>
+			<p class="section-subheadline">
+				Bow Valley climbing hosts thousands of active climbers, but fewer than 50 yearly donors. Help keep our crags bolted to modern 316 stainless standards and enjoy perks from our generous retail partners.
+			</p>
+		</div>
+
+		<div class="tiers-grid">
+			{tiers.map((tier) => (
+				<div class:list={["tier-card", { "tier-highlighted": tier.highlighted }]}>
+					{tier.badge && <div class:list={["tier-badge", { "badge-highlight": tier.highlighted }]}>{tier.badge}</div>}
+					<div class="tier-top">
+						<h3 class="tier-name">{tier.name}</h3>
+						<div class="tier-price-row">
+							<span class="tier-amount">{tier.amount}</span>
+							<span class="tier-cadence">/ {tier.cadence}</span>
+						</div>
+						<p class="tier-desc">{tier.description}</p>
+					</div>
+
+					<ul class="tier-features">
+						{tier.features.map((f) => (
+							<li>
+								<svg class="check-icon" viewBox="0 0 20 20" fill="currentColor">
+									<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+								</svg>
+								<span>{f}</span>
+							</li>
+						))}
+					</ul>
+
+					<div class="tier-action">
+						<a
+							href={tier.ctaUrl}
+							class:list={["btn", tier.highlighted ? "btn-primary" : "btn-secondary", "tier-btn"]}
+						>
+							{tier.ctaLabel}
+						</a>
+						<span class="tier-secure">Direct crag impact &bull; Tax receipt available</span>
+					</div>
+				</div>
+			))}
+		</div>
+
+		<div class="alt-donation-box">
+			<div class="alt-donation-content">
+				<h4>Other Ways to Give</h4>
+				<p>Prefer e-transfer or cheque? E-transfers can be sent directly to <code>donations@tabvar.org</code>. Cheques payable to TABVAR can be mailed to Box 8768 Stn Main, Canmore, AB T1W 0C1.</p>
+			</div>
+			<a href="/donate#offline" class="btn btn-secondary">Offline Details</a>
+		</div>
+	</div>
+</section>
+
+<style is:global>
+	.donor-tiers-section {
+		padding: var(--spacing-4xl) var(--spacing-lg);
+		background-color: var(--color-bg);
+	}
+
+	.donor-tiers-container {
+		max-width: 68rem;
+		margin: 0 auto;
+	}
+
+	.tiers-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+		gap: var(--spacing-2xl);
+		margin-top: var(--spacing-2xl);
+		align-items: stretch;
+	}
+
+	.tier-card {
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		padding: var(--spacing-2xl);
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		position: relative;
+		box-shadow: var(--shadow);
+		transition: border-color var(--transition-base), transform var(--transition-base), box-shadow var(--transition-base);
+	}
+
+	.tier-card:hover {
+		transform: translateY(-2px);
+		box-shadow: var(--shadow-lg);
+	}
+
+	.tier-highlighted {
+		border: 2px solid var(--color-brand);
+		box-shadow: var(--shadow-lg);
+	}
+
+	.tier-badge {
+		position: absolute;
+		top: -0.75rem;
+		right: 1.5rem;
+		background: var(--color-surface-alt);
+		color: var(--color-text);
+		border: 1px solid var(--color-border);
+		font-size: var(--font-size-xs);
+		font-weight: 700;
+		padding: 0.2rem 0.75rem;
+		border-radius: var(--radius-full);
+		box-shadow: var(--shadow-sm);
+	}
+
+	.badge-highlight {
+		background: var(--color-brand);
+		color: #ffffff;
+		border-color: var(--color-brand);
+	}
+
+	.tier-top {
+		margin-bottom: var(--spacing-xl);
+	}
+
+	.tier-name {
+		font-size: var(--font-size-xl);
+		font-weight: var(--font-weight-heading);
+		color: var(--color-text);
+		margin-bottom: var(--spacing-sm);
+	}
+
+	.tier-price-row {
+		display: flex;
+		align-items: baseline;
+		gap: 0.35rem;
+		margin-bottom: var(--spacing-md);
+	}
+
+	.tier-amount {
+		font-size: var(--font-size-4xl);
+		font-weight: var(--font-weight-display);
+		color: var(--color-text);
+		letter-spacing: var(--tracking-tight);
+		line-height: 1;
+	}
+
+	.tier-cadence {
+		font-size: var(--font-size-sm);
+		color: var(--color-muted);
+		font-weight: 500;
+	}
+
+	.tier-desc {
+		font-size: var(--font-size-sm);
+		color: var(--color-muted);
+		line-height: var(--leading-normal);
+	}
+
+	.tier-features {
+		list-style: none;
+		padding: var(--spacing-lg) 0;
+		border-top: 1px solid var(--color-border-subtle);
+		border-bottom: 1px solid var(--color-border-subtle);
+		margin-bottom: var(--spacing-xl);
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-sm);
+	}
+
+	.tier-features li {
+		display: flex;
+		align-items: flex-start;
+		gap: var(--spacing-sm);
+		font-size: var(--font-size-sm);
+		color: var(--color-text);
+		line-height: var(--leading-normal);
+	}
+
+	.check-icon {
+		width: 1.15rem;
+		height: 1.15rem;
+		color: var(--color-brand);
+		flex-shrink: 0;
+		margin-top: 0.15rem;
+	}
+
+	.tier-action {
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-xs);
+		text-align: center;
+	}
+
+	.tier-btn {
+		width: 100%;
+		padding: var(--spacing-md);
+		font-size: var(--font-size-sm);
+	}
+
+	.tier-secure {
+		font-size: var(--font-size-xs);
+		color: var(--color-muted);
+		margin-top: 0.25rem;
+	}
+
+	.alt-donation-box {
+		margin-top: var(--spacing-3xl);
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		padding: var(--spacing-xl);
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		gap: var(--spacing-lg);
+	}
+
+	.alt-donation-content {
+		max-width: 44rem;
+	}
+
+	.alt-donation-content h4 {
+		font-size: var(--font-size-base);
+		margin-bottom: var(--spacing-xs);
+	}
+
+	.alt-donation-content p {
+		font-size: var(--font-size-sm);
+		color: var(--color-muted);
+		line-height: var(--leading-normal);
+	}
+
+	.alt-donation-content code {
+		font-size: var(--font-size-xs);
+		color: var(--color-brand);
+		background: var(--color-brand-soft);
+		padding: 0.15rem 0.35rem;
+		border-radius: var(--radius-sm);
+		font-weight: 600;
+	}
+</style>
